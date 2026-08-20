@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events &amp; Conferences | AA Entertainment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav-bar">
+  <a href="index.html" class="logo-link">
+    <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img" decoding="async" loading="eager" fetchpriority="high">
+  </a>
+  <nav class="nav-links">
+    <a href="rooms-listing.html" >Stay</a>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">Dine</button>
+      <div class="nav-dropdown-panel">
+        <a href="restaurant.html">Restaurant</a>
+        <a href="cafe.html">Caf&eacute;</a>
+      </div>
+    </div>
+
+    <a href="spa.html" >Wellness</a>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger active">Events</button>
+      <div class="nav-dropdown-panel">
+        <a href="events.html#event-halls">Event Halls</a>
+        <a href="events.html#event-types">Weddings &amp; Ceremonies</a>
+        <a href="events.html#event-types">Meetings &amp; Conferences</a>
+        <a href="events.html#event-enquiry">Event Enquiry</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">Discover</button>
+      <div class="nav-dropdown-panel">
+        <a href="gallery.html">Gallery</a>
+        <a href="boutique.html">Boutique</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">About</button>
+      <div class="nav-dropdown-panel">
+        <a href="about.html">About the Hotel</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html#location">Location</a>
+      </div>
+    </div>
+  </nav>
+  <a href="reservation.html" class="btn btn-dark nav-cta">Reserve Stay</a>
+  <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <div class="mnav-header">
+    <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img footer-logo" decoding="async" loading="lazy">
+    <button type="button" class="mnav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="mnav-body">
+    <a href="reservation.html" class="btn btn-gold mnav-cta">Reserve Stay</a>
+
+    <a href="rooms-listing.html" class="mnav-link">Stay</a>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Dine</button>
+      <div class="mnav-sublist">
+        <a href="restaurant.html">Restaurant</a>
+        <a href="cafe.html">Caf&eacute;</a>
+      </div>
+    </div>
+
+    <a href="spa.html" class="mnav-link">Wellness</a>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Events</button>
+      <div class="mnav-sublist">
+        <a href="events.html#event-halls">Event Halls</a>
+        <a href="events.html#event-types">Weddings &amp; Ceremonies</a>
+        <a href="events.html#event-types">Meetings &amp; Conferences</a>
+        <a href="events.html#event-enquiry">Event Enquiry</a>
+      </div>
+    </div>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Discover</button>
+      <div class="mnav-sublist">
+        <a href="gallery.html">Gallery</a>
+        <a href="boutique.html">Boutique</a>
+      </div>
+    </div>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">About</button>
+      <div class="mnav-sublist">
+        <a href="about.html">About the Hotel</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html#location">Location</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ EVENTS HERO ============ -->
+<section class="hero hero-lg" style="background-image:url('images/8807c8e1-5aa6-475a-8648-c0bc396b72fc.webp');">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="eyebrow eyebrow-light">
+      <span class="eyebrow-line"></span>
+      <span>Elite Assemblies</span>
+    </div>
+    <h1 class="hero-title">Events &amp; Conferences</h1>
+    <p class="hero-body">Host your high-caliber corporate summits, elegant cocktail parties, or multi-day executive workshops in Abeokuta's most secure and technically advanced spaces.</p>
+  </div>
+</section>
+
+<!-- ============ VENUES ============ -->
+<section class="venues-section" id="event-halls">
+  <div class="listing-header">
+    <div class="eyebrow">
+      <span class="eyebrow-line"></span>
+      <span>The Venues</span>
+    </div>
+    <h2 class="section-title">Perfect Settings for Discerning Hosts</h2>
+  </div>
+
+  <div class="venue-row">
+    <div class="venue-image"><img src="images/3ae76921-a48d-4cc8-a9f2-8514e32ddc51.webp" alt="Grand Ballroom" decoding="async" loading="eager" fetchpriority="high"></div>
+    <div class="venue-text">
+      <div class="venue-title-badge">
+        <span class="badge">Up to 300 Guests</span>
+        <h3>Grand Ballroom</h3>
+      </div>
+      <p class="body-text">Our flagship hall. Masterfully tailored with vaulted ceilings, crystal droplet installations, customizable acoustics, and a staging area fit for international keynote galas or bespoke luxury weddings.</p>
+      <div class="facilities">
+        <p class="facilities-label">Key Facilities</p>
+        <p class="facilities-desc">Modular staging, private pre-function lobby, dedicated green rooms, built-in dual laser projectors.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="venue-row">
+    <div class="venue-image"><img src="images/6cdd124c-8cb3-4231-89c2-7cc1069aa870.webp" alt="Executive Boardroom" decoding="async" loading="lazy"></div>
+    <div class="venue-text">
+      <div class="venue-title-badge">
+        <span class="badge">Up to 20 Guests</span>
+        <h3>Executive Boardroom</h3>
+      </div>
+      <p class="body-text">An ultra-secured summit environment engineered for key stakeholders. Features custom mahogany meeting tables, biometric sound shielding, and immediate high-speed digital infrastructure.</p>
+      <div class="facilities">
+        <p class="facilities-label">Key Facilities</p>
+        <p class="facilities-desc">8K presentation screens, secure video conferencing array, premium espresso and beverage credenza.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="venue-row">
+    <div class="venue-image"><img src="images/5c3dd353-ebe1-467e-8956-89e6999f78c9.webp" alt="The Garden Terrace" decoding="async" loading="lazy"></div>
+    <div class="venue-text">
+      <div class="venue-title-badge">
+        <span class="badge">Up to 150 Guests</span>
+        <h3>The Garden Terrace</h3>
+      </div>
+      <p class="body-text">An exquisite open-air garden venue. Set against lush local botanicals and the gentle flow of the Ogun River nearby, it captures the perfect Abeokuta evening breeze for premium sunset cocktails and private sunset soir&eacute;es.</p>
+      <div class="facilities">
+        <p class="facilities-label">Key Facilities</p>
+        <p class="facilities-desc">Ambient atmospheric lighting system, dedicated outdoor gourmet bar setup, staging area for acoustic live music.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVENT TYPES ============ -->
+<section class="event-types-strip" id="event-types">
+  <div class="section-header-center">
+    <div class="eyebrow">
+      <span class="eyebrow-line"></span>
+      <span>Curated Services</span>
+    </div>
+    <h2 class="section-title center">Occasions Executed to Flawless Standards</h2>
+  </div>
+  <div class="types-grid">
+    <div class="type-card"><h4>Weddings</h4><p>Curating lifetime memories with immaculate bridal styling, custom menus, and dedicated concierge care.</p></div>
+    <div class="type-card"><h4>Corporate Summits</h4><p>High-security environments equipped with fiber infrastructure for effortless executive retreats.</p></div>
+    <div class="type-card"><h4>Press Conferences</h4><p>Optimized media staging, premium acoustics, and tailored hospitality suites for maximum brand presence.</p></div>
+    <div class="type-card"><h4>Private Dining</h4><p>Intimate tasting sessions in our elite vaults, featuring personal master chef consultations.</p></div>
+    <div class="type-card"><h4>Milestone Birthdays</h4><p>Vibrant, high-style celebrations designed in signature Abeokuta flair with tailored entertainment.</p></div>
+  </div>
+</section>
+
+<!-- ============ FACILITIES ============ -->
+<section class="facilities-section">
+  <div class="section-header-center">
+    <div class="eyebrow">
+      <span class="eyebrow-line"></span>
+      <span>Flawless Execution</span>
+    </div>
+    <h2 class="section-title center">State-of-the-Art Standard Features</h2>
+  </div>
+  <div class="facilities-grid">
+    <div class="facility-card"><div class="facility-header"><span class="bullet"></span><h4>Dual Laser Projectors</h4></div><p>Ultra-bright high-contrast projection systems engineered for pristine executive visuals.</p></div>
+    <div class="facility-card"><div class="facility-header"><span class="bullet"></span><h4>Biometric Sound System</h4></div><p>Spatially balanced acoustics designed for effortless projection of voices and live bands alike.</p></div>
+    <div class="facility-card"><div class="facility-header"><span class="bullet"></span><h4>Redundant Gigabit Fiber WiFi</h4></div><p>Dedicated symmetric pipeline ensuring zero latency during hybrid global webcasts.</p></div>
+    <div class="facility-card"><div class="facility-header"><span class="bullet"></span><h4>Artisanal Gourmet Catering</h4></div><p>Hyper-local African delicacies and global classics, curated by our legendary executive chefs.</p></div>
+    <div class="facility-card"><div class="facility-header"><span class="bullet"></span><h4>Custom Scenic Decoration</h4></div><p>From minimal modern chic to rich Afro-fusion floral concepts managed by master stylists.</p></div>
+    <div class="facility-card"><div class="facility-header"><span class="bullet"></span><h4>Dedicated Event Coordinator</h4></div><p>Your singular point of contact ensuring flawless execution from initial brief to teardown.</p></div>
+  </div>
+</section>
+
+<!-- ============ RESERVATION CTA ============ -->
+<section class="reservation-cta" id="event-enquiry">
+  <div class="reservation-panel">
+    <div class="eyebrow">
+      <span class="eyebrow-line"></span>
+      <span>Partner with our Planners</span>
+    </div>
+    <h2 class="section-title center">Bring Your Vision to Life</h2>
+    <p class="body-text center narrow">Our dedicated corporate planning concierge will work alongside your teams to curate custom menus, technical frameworks, and highly secure logistics.</p>
+    <a href="reservation.html" class="btn btn-gold">Plan Your Event</a>
+  </div>
+</section>
+
+<!-- ============ CONTACT BAR ============ -->
+<div class="contact-bar">
+  <div class="contact-item">
+    <img src="images/133485d1-e9c5-4c1a-bf3b-e28d2dcb2a97.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>Kuto, Abeokuta, Ogun State</span>
+  </div>
+  <div class="contact-item">
+    <img src="images/3a10691a-c36b-4524-8642-644ab9ef1808.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>+234 1 277 3500</span>
+  </div>
+  <div class="contact-item">
+    <img src="images/6395c4e0-806d-4db3-8472-b46648e29a55.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>reservations@aa-entertainment.com</span>
+  </div>
+  <a href="#" class="contact-item whatsapp">
+    <img src="images/ad01f407-2472-4d83-a40c-49c3ae516739.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>WhatsApp Chat</span>
+  </a>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img footer-logo" decoding="async" loading="lazy">
+      <p class="body-text light">Experience the timeless spirit of Abeokuta beautifully balanced with understated elegance and warm-luxe African hospitality. A premium sanctuary designed for global business and leisure tastemakers.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <p class="footer-col-title">Explore</p>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="rooms-listing.html">Rooms</a>
+        <a href="restaurant.html">Restaurant</a>
+        <a href="spa.html">Spa &amp; Wellness</a>
+        <a href="cafe.html">Caf&eacute;</a>
+        <a href="boutique.html">Boutique</a>
+        <a href="events.html">Events &amp; Conferences</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Legal &amp; Info</p>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">FAQs</a>
+        <a href="#">Careers</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="footer-divider">
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 AA Entertainment Limited. All rights reserved. Kuto, Abeokuta, Ogun State.</p>
+    <div class="socials">
+      <a href="#" class="social-icon" aria-label="Instagram"><img src="images/d0aa5016-318e-4996-b40d-6464f9cd7c2d.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="Facebook"><img src="images/3016db6c-f513-4dd8-9a69-4d9f27b1be1c.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="Twitter"><img src="images/ab5aa66d-9feb-49df-8a2f-7ec8b65e7fb4.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="LinkedIn"><img src="images/4b9b3f13-eb03-427e-ba84-b27eb830cdce.svg" alt="" decoding="async" loading="lazy"></a>
+    </div>
+  </div>
+</footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

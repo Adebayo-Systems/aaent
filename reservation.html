@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reserve Your Stay | AA Entertainment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav-bar">
+  <a href="index.html" class="logo-link">
+    <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img" decoding="async" loading="eager" fetchpriority="high">
+  </a>
+  <nav class="nav-links">
+    <a href="rooms-listing.html" >Stay</a>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">Dine</button>
+      <div class="nav-dropdown-panel">
+        <a href="restaurant.html">Restaurant</a>
+        <a href="cafe.html">Caf&eacute;</a>
+      </div>
+    </div>
+
+    <a href="spa.html" >Wellness</a>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">Events</button>
+      <div class="nav-dropdown-panel">
+        <a href="events.html#event-halls">Event Halls</a>
+        <a href="events.html#event-types">Weddings &amp; Ceremonies</a>
+        <a href="events.html#event-types">Meetings &amp; Conferences</a>
+        <a href="events.html#event-enquiry">Event Enquiry</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">Discover</button>
+      <div class="nav-dropdown-panel">
+        <a href="gallery.html">Gallery</a>
+        <a href="boutique.html">Boutique</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">About</button>
+      <div class="nav-dropdown-panel">
+        <a href="about.html">About the Hotel</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html#location">Location</a>
+      </div>
+    </div>
+  </nav>
+  <a href="reservation.html" class="btn btn-dark nav-cta">Reserve Stay</a>
+  <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <div class="mnav-header">
+    <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img footer-logo" decoding="async" loading="lazy">
+    <button type="button" class="mnav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="mnav-body">
+    <a href="reservation.html" class="btn btn-gold mnav-cta">Reserve Stay</a>
+
+    <a href="rooms-listing.html" class="mnav-link">Stay</a>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Dine</button>
+      <div class="mnav-sublist">
+        <a href="restaurant.html">Restaurant</a>
+        <a href="cafe.html">Caf&eacute;</a>
+      </div>
+    </div>
+
+    <a href="spa.html" class="mnav-link">Wellness</a>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Events</button>
+      <div class="mnav-sublist">
+        <a href="events.html#event-halls">Event Halls</a>
+        <a href="events.html#event-types">Weddings &amp; Ceremonies</a>
+        <a href="events.html#event-types">Meetings &amp; Conferences</a>
+        <a href="events.html#event-enquiry">Event Enquiry</a>
+      </div>
+    </div>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Discover</button>
+      <div class="mnav-sublist">
+        <a href="gallery.html">Gallery</a>
+        <a href="boutique.html">Boutique</a>
+      </div>
+    </div>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">About</button>
+      <div class="mnav-sublist">
+        <a href="about.html">About the Hotel</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html#location">Location</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ RESERVATION HERO ============ -->
+<section class="hero hero-sm" style="background-image:url('images/b097abef-9cb0-4dbf-ae15-e575f1d11012.webp');">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="eyebrow eyebrow-light">
+      <span class="eyebrow-line"></span>
+      <span>Impeccable Stays</span>
+    </div>
+    <h1 class="hero-title hero-title-sm">Reserve Your Stay</h1>
+    <p class="hero-body">Secure Abeokuta&rsquo;s finest architectural escape and bespoke personal service. Allow us to personalize your experience from the moment of your reservation request.</p>
+  </div>
+</section>
+
+<!-- ============ RESERVATION SPLIT PANEL ============ -->
+<section class="reservation-split-panel">
+  <div class="form-container">
+    <div class="form-header">
+      <h2 class="section-title-sm">Booking Request Form</h2>
+      <p class="body-text">Please populate the fields below with your journey details. Our private booking concierge will verify availability immediately.</p>
+    </div>
+
+    <div id="bookingFormView">
+    <form class="booking-form" id="reservationForm" novalidate>
+      <div class="input-row">
+        <div class="field-wrap">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="fullName" placeholder="e.g. Alaba Kolade" required>
+          <span class="field-error" data-error-for="fullName"></span>
+        </div>
+        <div class="field-wrap">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="e.g. alaba@company.com" required>
+          <span class="field-error" data-error-for="email"></span>
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="field-wrap">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="e.g. +234 803 123 4567" required>
+          <span class="field-error" data-error-for="phone"></span>
+        </div>
+        <div class="field-wrap">
+          <label for="roomPreference">Room Preference</label>
+          <select id="roomPreference" name="roomPreference" required>
+            <option value="">Choose Your Room/Suite</option>
+            <option>Standard Room</option>
+            <option>Deluxe Room</option>
+            <option>Deluxe Suite</option>
+            <option>Executive Suite</option>
+            <option>Presidential Suite</option>
+          </select>
+          <span class="field-error" data-error-for="roomPreference"></span>
+        </div>
+      </div>
+      <div class="input-row input-row-thirds">
+        <div class="field-wrap">
+          <label for="checkIn">Check-In Date</label>
+          <input type="date" id="checkIn" name="checkIn" required>
+          <span class="field-error" data-error-for="checkIn"></span>
+        </div>
+        <div class="field-wrap">
+          <label for="checkOut">Check-Out Date</label>
+          <input type="date" id="checkOut" name="checkOut" required>
+          <span class="field-error" data-error-for="checkOut"></span>
+        </div>
+        <div class="field-wrap">
+          <label for="guests">Number of Guests</label>
+          <select id="guests" name="guests">
+            <option>1 Guest</option>
+            <option>2 Guests</option>
+            <option>3 Guests</option>
+            <option>4+ Guests</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-wrap">
+        <label for="specialRequests">Special Requests &amp; Preferences</label>
+        <textarea rows="4" id="specialRequests" name="specialRequests" placeholder="Dietary specifications, specific pillows, security requests, flight numbers for airport transit..."></textarea>
+      </div>
+
+      <div class="submission-block">
+        <div class="form-status" id="formStatus" role="alert" aria-live="polite"></div>
+        <button type="submit" class="btn btn-gold btn-full" id="submitBtn">Submit Reservation Request</button>
+        <div class="note-panel">
+          <p>* Note: This request does not require payment. After submitting, our team will contact you within 24 hours to confirm availability and finalize your booking.</p>
+        </div>
+      </div>
+    </form>
+    </div>
+
+    <div id="bookingConfirmView" class="booking-confirm" hidden>
+      <div class="confirm-icon">&#10003;</div>
+      <h2 class="section-title-sm">Booking Request Received</h2>
+      <p class="body-text">Thank you<span id="confirmName"></span>. We&rsquo;ve received your reservation request and no payment was taken. Our concierge team will reach out within 24 hours to confirm availability and arrange payment.</p>
+      <div class="confirm-summary" id="confirmSummary"></div>
+      <button type="button" class="btn btn-dark" id="newReservationBtn">Make Another Request</button>
+    </div>
+  </div>
+
+  <aside class="side-panel">
+    <div class="benefits-card">
+      <h3>Direct Booking Benefits</h3>
+      <div class="benefits-list">
+        <div class="benefit-row"><span class="check">&#10003;</span><span>Best rate guarantee over all external sites</span></div>
+        <div class="benefit-row"><span class="check">&#10003;</span><span>Complimentary luxury airport transit service</span></div>
+        <div class="benefit-row"><span class="check">&#10003;</span><span>Flexible check-in / check-out availability</span></div>
+        <div class="benefit-row"><span class="check">&#10003;</span><span>Welcome premium Nigerian botanical cocktail</span></div>
+        <div class="benefit-row"><span class="check">&#10003;</span><span>Discounts on private dining in Tasting Room</span></div>
+      </div>
+    </div>
+
+    <div class="quick-contact-card">
+      <h3>Immediate Inquiries</h3>
+      <div class="quick-contact-list">
+        <div class="qc-item">
+          <p class="qc-label">Corporate Booking Desk</p>
+          <p class="qc-value">+234 1 277 3500</p>
+        </div>
+        <div class="qc-item">
+          <p class="qc-label">Support Email</p>
+          <p class="qc-value">reservations@aa-entertainment.com</p>
+        </div>
+        <div class="qc-item">
+          <p class="qc-label">Private Concierge WhatsApp</p>
+          <p class="qc-value">+234 812 345 6789</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+</section>
+
+<!-- ============ CONTACT BAR ============ -->
+<div class="contact-bar">
+  <div class="contact-item">
+    <img src="images/6b9d6cbd-cc93-4369-9fa8-edf10b7f7d9e.svg" alt="" class="icon" decoding="async" loading="eager" fetchpriority="high">
+    <span>Kuto, Abeokuta, Ogun State</span>
+  </div>
+  <div class="contact-item">
+    <img src="images/bc196ec8-ee47-4707-856a-9c5b5a7efb0b.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>+234 1 277 3500</span>
+  </div>
+  <div class="contact-item">
+    <img src="images/60a42dbf-734d-4657-8c5d-df64ff518b72.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>reservations@aa-entertainment.com</span>
+  </div>
+  <a href="#" class="contact-item whatsapp">
+    <img src="images/0dc0a328-4058-4206-8a3a-04e214b38860.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>WhatsApp Chat</span>
+  </a>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img footer-logo" decoding="async" loading="lazy">
+      <p class="body-text light">Experience the timeless spirit of Abeokuta beautifully balanced with understated elegance and warm-luxe African hospitality. A premium sanctuary designed for global business and leisure tastemakers.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <p class="footer-col-title">Explore</p>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="rooms-listing.html">Rooms</a>
+        <a href="restaurant.html">Restaurant</a>
+        <a href="spa.html">Spa &amp; Wellness</a>
+        <a href="cafe.html">Caf&eacute;</a>
+        <a href="boutique.html">Boutique</a>
+        <a href="events.html">Events &amp; Conferences</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Legal &amp; Info</p>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">FAQs</a>
+        <a href="#">Careers</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="footer-divider">
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 AA Entertainment Limited. All rights reserved. Kuto, Abeokuta, Ogun State.</p>
+    <div class="socials">
+      <a href="#" class="social-icon" aria-label="Instagram"><img src="images/b217c626-906f-4699-82a4-c8d0b4666df5.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="Facebook"><img src="images/5fbc5af1-cd8d-4d9c-b8a1-d6afe7435390.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="Twitter"><img src="images/0718424c-f4de-4143-8cb7-4be208a085f1.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="LinkedIn"><img src="images/3eb11ab9-e214-4365-baeb-e6e0ec15417d.svg" alt="" decoding="async" loading="lazy"></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('reservationForm');
+  var formView = document.getElementById('bookingFormView');
+  var confirmView = document.getElementById('bookingConfirmView');
+  var statusBox = document.getElementById('formStatus');
+  var submitBtn = document.getElementById('submitBtn');
+
+  function clearErrors() {
+    var errs = form.querySelectorAll('.field-error');
+    errs.forEach(function (e) { e.textContent = ''; });
+    form.querySelectorAll('.has-error').forEach(function (el) { el.classList.remove('has-error'); });
+  }
+
+  function setError(fieldName, message) {
+    var input = form.querySelector('[name="' + fieldName + '"]');
+    var errEl = form.querySelector('[data-error-for="' + fieldName + '"]');
+    if (input) input.classList.add('has-error');
+    if (errEl) errEl.textContent = message;
+  }
+
+  function validate(data) {
+    var valid = true;
+
+    if (!data.fullName.trim()) { setError('fullName', 'Please enter your full name.'); valid = false; }
+
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(data.email.trim())) { setError('email', 'Please enter a valid email address.'); valid = false; }
+
+    if (data.phone.trim().length < 7) { setError('phone', 'Please enter a valid phone number.'); valid = false; }
+
+    if (!data.roomPreference) { setError('roomPreference', 'Please choose a room or suite.'); valid = false; }
+
+    if (!data.checkIn) { setError('checkIn', 'Please select a check-in date.'); valid = false; }
+    if (!data.checkOut) { setError('checkOut', 'Please select a check-out date.'); valid = false; }
+
+    if (data.checkIn && data.checkOut) {
+      var inDate = new Date(data.checkIn);
+      var outDate = new Date(data.checkOut);
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      if (inDate < today) { setError('checkIn', 'Check-in date cannot be in the past.'); valid = false; }
+      if (outDate <= inDate) { setError('checkOut', 'Check-out must be after check-in.'); valid = false; }
+    }
+
+    return valid;
+  }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    var d = new Date(dateStr + 'T00:00:00');
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    clearErrors();
+    statusBox.textContent = '';
+    statusBox.className = 'form-status';
+
+    var data = {
+      fullName: form.fullName.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      roomPreference: form.roomPreference.value,
+      checkIn: form.checkIn.value,
+      checkOut: form.checkOut.value,
+      guests: form.guests.value,
+      specialRequests: form.specialRequests.value
+    };
+
+    if (!validate(data)) {
+      statusBox.textContent = 'Please fix the highlighted fields and try again.';
+      statusBox.className = 'form-status form-status-error';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    // NOTE FOR DEVELOPER:
+    // This is a front-end-only workflow — no payment is collected here, matching the
+    // reservation model in the proposal (guest submits a request, staff confirm and
+    // arrange payment separately, e.g. by bank transfer).
+    // To make this live, replace the block below with a real submission, e.g.:
+    //   fetch('/wp-json/aa-hotel/v1/reservations', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(data)
+    //   }).then(...)
+    // and only show the confirmation view once that request succeeds.
+    setTimeout(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Reservation Request';
+      showConfirmation(data);
+    }, 700);
+  });
+
+  function showConfirmation(data) {
+    document.getElementById('confirmName').textContent = ', ' + data.fullName.trim().split(' ')[0];
+
+    var summaryHtml = ''
+      + '<div class="confirm-row"><span>Room / Suite</span><span>' + escapeHtml(data.roomPreference) + '</span></div>'
+      + '<div class="confirm-row"><span>Check-In</span><span>' + escapeHtml(formatDate(data.checkIn)) + '</span></div>'
+      + '<div class="confirm-row"><span>Check-Out</span><span>' + escapeHtml(formatDate(data.checkOut)) + '</span></div>'
+      + '<div class="confirm-row"><span>Guests</span><span>' + escapeHtml(data.guests) + '</span></div>'
+      + '<div class="confirm-row"><span>Contact</span><span>' + escapeHtml(data.email) + ' &middot; ' + escapeHtml(data.phone) + '</span></div>';
+
+    document.getElementById('confirmSummary').innerHTML = summaryHtml;
+
+    formView.hidden = true;
+    confirmView.hidden = false;
+    confirmView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  document.getElementById('newReservationBtn').addEventListener('click', function () {
+    form.reset();
+    clearErrors();
+    statusBox.textContent = '';
+    confirmView.hidden = true;
+    formView.hidden = false;
+  });
+})();
+</script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

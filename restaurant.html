@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant &amp; Bar | AA Entertainment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav-bar">
+  <a href="index.html" class="logo-link">
+    <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img" decoding="async" loading="eager" fetchpriority="high">
+  </a>
+  <nav class="nav-links">
+    <a href="rooms-listing.html" >Stay</a>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger active">Dine</button>
+      <div class="nav-dropdown-panel">
+        <a href="restaurant.html">Restaurant</a>
+        <a href="cafe.html">Caf&eacute;</a>
+      </div>
+    </div>
+
+    <a href="spa.html" >Wellness</a>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">Events</button>
+      <div class="nav-dropdown-panel">
+        <a href="events.html#event-halls">Event Halls</a>
+        <a href="events.html#event-types">Weddings &amp; Ceremonies</a>
+        <a href="events.html#event-types">Meetings &amp; Conferences</a>
+        <a href="events.html#event-enquiry">Event Enquiry</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">Discover</button>
+      <div class="nav-dropdown-panel">
+        <a href="gallery.html">Gallery</a>
+        <a href="boutique.html">Boutique</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">About</button>
+      <div class="nav-dropdown-panel">
+        <a href="about.html">About the Hotel</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html#location">Location</a>
+      </div>
+    </div>
+  </nav>
+  <a href="reservation.html" class="btn btn-dark nav-cta">Reserve Stay</a>
+  <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <div class="mnav-header">
+    <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img footer-logo" decoding="async" loading="lazy">
+    <button type="button" class="mnav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="mnav-body">
+    <a href="reservation.html" class="btn btn-gold mnav-cta">Reserve Stay</a>
+
+    <a href="rooms-listing.html" class="mnav-link">Stay</a>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Dine</button>
+      <div class="mnav-sublist">
+        <a href="restaurant.html">Restaurant</a>
+        <a href="cafe.html">Caf&eacute;</a>
+      </div>
+    </div>
+
+    <a href="spa.html" class="mnav-link">Wellness</a>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Events</button>
+      <div class="mnav-sublist">
+        <a href="events.html#event-halls">Event Halls</a>
+        <a href="events.html#event-types">Weddings &amp; Ceremonies</a>
+        <a href="events.html#event-types">Meetings &amp; Conferences</a>
+        <a href="events.html#event-enquiry">Event Enquiry</a>
+      </div>
+    </div>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Discover</button>
+      <div class="mnav-sublist">
+        <a href="gallery.html">Gallery</a>
+        <a href="boutique.html">Boutique</a>
+      </div>
+    </div>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">About</button>
+      <div class="mnav-sublist">
+        <a href="about.html">About the Hotel</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html#location">Location</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DINING HERO ============ -->
+<section class="hero hero-lg" style="background-image:url('images/5498a0f4-d8ee-4951-9a4e-a17d7b1a837b.webp');">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="eyebrow eyebrow-light">
+      <span class="eyebrow-line"></span>
+      <span>The Tasting Room</span>
+    </div>
+    <h1 class="hero-title">Elevated Epicurean Journey</h1>
+    <p class="hero-body">Where indigenous West African flavors are masterfully reimagined with contemporary global techniques.</p>
+  </div>
+</section>
+
+<!-- ============ HOURS SPLIT ============ -->
+<section class="hours-split">
+  <div class="welcome-text">
+    <div class="eyebrow">
+      <span class="eyebrow-line"></span>
+      <span>Sensory Delights</span>
+    </div>
+    <h2 class="section-title">West African Fusion At Its Finest</h2>
+    <p class="body-text">Our master culinary crew sources wild spices from the local markets and premium imported prime cuts to forge a highly original gastronomy. Flanked by textured clay walls and moody dim lighting, the Tasting Room invites a deep appreciation of time, taste, and connection.</p>
+    <a href="#" class="link-row">Download Full Digital Menu (PDF)</a>
+  </div>
+  <div class="hours-card">
+    <h3>Opening Hours</h3>
+    <div class="hours-rows">
+      <div class="slot-row"><span>Breakfast Buffet</span><span>7:00 AM &mdash; 10:30 AM</span></div>
+      <div class="slot-row"><span>Lunch Service</span><span>12:00 PM &mdash; 3:30 PM</span></div>
+      <div class="slot-row"><span>Dinner Tasting</span><span>6:00 PM &mdash; 10:30 PM</span></div>
+      <div class="slot-row"><span>Bar &amp; Lounge</span><span>5:00 PM &mdash; Midnight</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED DISHES ============ -->
+<section class="featured-dishes">
+  <div class="section-header-center">
+    <div class="eyebrow">
+      <span class="eyebrow-line"></span>
+      <span>Signature Culinary Art</span>
+    </div>
+    <h2 class="section-title center">Our Chef&rsquo;s Masterpieces</h2>
+  </div>
+  <div class="dishes-grid">
+    <article class="dish-card">
+      <div class="dish-img"><img src="images/65abb5d1-5927-4f41-836c-6075850bfe38.webp" alt="Suya-Glazed Tenderloin" decoding="async" loading="eager" fetchpriority="high"></div>
+      <div class="dish-content">
+        <div class="dish-title-price"><h4>Suya-Glazed Tenderloin</h4><span class="dish-price">&#8358;18,500</span></div>
+        <p class="dish-category">Mains</p>
+        <p class="dish-desc">Aged premium beef, dry-rubbed in house suya spice blend, smoked mahogany finish, sweet plantain mash.</p>
+      </div>
+    </article>
+    <article class="dish-card">
+      <div class="dish-img"><img src="images/ce3cd6b4-2af1-4d27-beb6-050cff8e580a.webp" alt="Seafood Okra Royale" decoding="async" loading="lazy"></div>
+      <div class="dish-content">
+        <div class="dish-title-price"><h4>Seafood Okra Royale</h4><span class="dish-price">&#8358;24,000</span></div>
+        <p class="dish-category">Traditional</p>
+        <p class="dish-desc">Jumbo prawns, fresh local crab claws, and soft sea bass slow-cooked in a rich local herbal broth.</p>
+      </div>
+    </article>
+    <article class="dish-card">
+      <div class="dish-img"><img src="images/81b7bd52-e085-4877-8db4-ca3d693eb108.webp" alt="Gold-Leaf Jollof Arancini" decoding="async" loading="lazy"></div>
+      <div class="dish-content">
+        <div class="dish-title-price"><h4>Gold-Leaf Jollof Arancini</h4><span class="dish-price">&#8358;11,000</span></div>
+        <p class="dish-category">Starters</p>
+        <p class="dish-desc">Crispy fried party-style Jollof risotto balls filled with aged goat cheese, garnished with edible gold.</p>
+      </div>
+    </article>
+    <article class="dish-card">
+      <div class="dish-img"><img src="images/65abb5d1-5927-4f41-836c-6075850bfe38.webp" alt="Hibiscus Saffron Tart" decoding="async" loading="lazy"></div>
+      <div class="dish-content">
+        <div class="dish-title-price"><h4>Hibiscus Saffron Tart</h4><span class="dish-price">&#8358;9,500</span></div>
+        <p class="dish-category">Desserts</p>
+        <p class="dish-desc">Silky zobo-infused dark chocolate pastry shell, wild berries, premium Iranian saffron cream.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ BAR & LOUNGE ============ -->
+<section class="bento-strip">
+  <div class="bento-text bento-text-dark">
+    <div class="eyebrow">
+      <span class="eyebrow-line"></span>
+      <span>The Gold Reserve</span>
+    </div>
+    <h2 class="section-title-sm light">Bar &amp; Cognac Lounge</h2>
+    <p class="body-text light">After sundown, retire to our premium enclave featuring vintage single malts, custom cocktails hand-muddled with native Nigerian botanicals, and high-quality imported cuban cigars. Perfect for winding down private business deals.</p>
+    <a href="reservation.html" class="btn btn-gold">Book a Private Alcove</a>
+  </div>
+  <div class="bento-image">
+    <img src="images/f1cab3bd-d0fd-4296-9ffa-2d640567c708.webp" alt="Bar and cognac lounge" decoding="async" loading="lazy">
+  </div>
+</section>
+
+<!-- ============ TABLE RESERVE CTA ============ -->
+<section class="table-reserve">
+  <h2 class="section-title center">Experience the Taste of AA</h2>
+  <p class="body-text center narrow">We strongly advise advanced bookings due to high corporate and weekend booking demand.</p>
+  <a href="reservation.html" class="btn btn-dark">Book Your Table Now</a>
+</section>
+
+<!-- ============ CONTACT BAR ============ -->
+<div class="contact-bar">
+  <div class="contact-item">
+    <img src="images/c451eb77-7180-4529-870a-7f57bdf69bc1.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>Kuto, Abeokuta, Ogun State</span>
+  </div>
+  <div class="contact-item">
+    <img src="images/ed72b2d9-1562-4e58-a951-ece41cb3c511.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>+234 1 277 3500</span>
+  </div>
+  <div class="contact-item">
+    <img src="images/a101bce7-e7b7-4f5d-a6f6-5502f54199f7.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>reservations@aa-entertainment.com</span>
+  </div>
+  <a href="#" class="contact-item whatsapp">
+    <img src="images/9c83d855-2c5a-4858-9aff-face242a1027.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>WhatsApp Chat</span>
+  </a>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img footer-logo" decoding="async" loading="lazy">
+      <p class="body-text light">Experience the timeless spirit of Abeokuta beautifully balanced with understated elegance and warm-luxe African hospitality. A premium sanctuary designed for global business and leisure tastemakers.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <p class="footer-col-title">Explore</p>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="rooms-listing.html">Rooms</a>
+        <a href="restaurant.html">Restaurant</a>
+        <a href="spa.html">Spa &amp; Wellness</a>
+        <a href="cafe.html">Caf&eacute;</a>
+        <a href="boutique.html">Boutique</a>
+        <a href="events.html">Events &amp; Conferences</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Legal &amp; Info</p>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">FAQs</a>
+        <a href="#">Careers</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="footer-divider">
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 AA Entertainment Limited. All rights reserved. Kuto, Abeokuta, Ogun State.</p>
+    <div class="socials">
+      <a href="#" class="social-icon" aria-label="Instagram"><img src="images/76013316-70ef-4fa3-861c-e6888504674b.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="Facebook"><img src="images/dd833f39-614a-41d9-95b1-5cb0962d1543.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="Twitter"><img src="images/d0edc7b2-e9d3-4db9-a222-c53d5214abdb.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="LinkedIn"><img src="images/8c480afb-ae19-45ed-b7ee-90cd4b9ade55.svg" alt="" decoding="async" loading="lazy"></a>
+    </div>
+  </div>
+</footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

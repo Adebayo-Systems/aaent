@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | AA Entertainment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav-bar">
+  <a href="index.html" class="logo-link">
+    <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img" decoding="async" loading="eager" fetchpriority="high">
+  </a>
+  <nav class="nav-links">
+    <a href="rooms-listing.html" >Stay</a>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">Dine</button>
+      <div class="nav-dropdown-panel">
+        <a href="restaurant.html">Restaurant</a>
+        <a href="cafe.html">Caf&eacute;</a>
+      </div>
+    </div>
+
+    <a href="spa.html" >Wellness</a>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">Events</button>
+      <div class="nav-dropdown-panel">
+        <a href="events.html#event-halls">Event Halls</a>
+        <a href="events.html#event-types">Weddings &amp; Ceremonies</a>
+        <a href="events.html#event-types">Meetings &amp; Conferences</a>
+        <a href="events.html#event-enquiry">Event Enquiry</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">Discover</button>
+      <div class="nav-dropdown-panel">
+        <a href="gallery.html">Gallery</a>
+        <a href="boutique.html">Boutique</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger active">About</button>
+      <div class="nav-dropdown-panel">
+        <a href="about.html">About the Hotel</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html#location">Location</a>
+      </div>
+    </div>
+  </nav>
+  <a href="reservation.html" class="btn btn-dark nav-cta">Reserve Stay</a>
+  <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <div class="mnav-header">
+    <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img footer-logo" decoding="async" loading="lazy">
+    <button type="button" class="mnav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="mnav-body">
+    <a href="reservation.html" class="btn btn-gold mnav-cta">Reserve Stay</a>
+
+    <a href="rooms-listing.html" class="mnav-link">Stay</a>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Dine</button>
+      <div class="mnav-sublist">
+        <a href="restaurant.html">Restaurant</a>
+        <a href="cafe.html">Caf&eacute;</a>
+      </div>
+    </div>
+
+    <a href="spa.html" class="mnav-link">Wellness</a>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Events</button>
+      <div class="mnav-sublist">
+        <a href="events.html#event-halls">Event Halls</a>
+        <a href="events.html#event-types">Weddings &amp; Ceremonies</a>
+        <a href="events.html#event-types">Meetings &amp; Conferences</a>
+        <a href="events.html#event-enquiry">Event Enquiry</a>
+      </div>
+    </div>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Discover</button>
+      <div class="mnav-sublist">
+        <a href="gallery.html">Gallery</a>
+        <a href="boutique.html">Boutique</a>
+      </div>
+    </div>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">About</button>
+      <div class="mnav-sublist">
+        <a href="about.html">About the Hotel</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html#location">Location</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CONTACT HERO ============ -->
+<section class="hero hero-sm" style="background-image:url('images/245ab7a4-1ba1-405e-b35b-04f59e557a41.webp');">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="eyebrow eyebrow-light">
+      <span class="eyebrow-line"></span>
+      <span>At Your Service</span>
+    </div>
+    <h1 class="hero-title hero-title-sm">Contact Us</h1>
+    <p class="hero-body">Whether scheduling a secure business conference or custom suite stays, our professional concierge desk stands prepared to coordinate flawlessly.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT SPLIT ============ -->
+<section class="contact-split">
+  <div class="contact-form-side">
+    <div class="form-title-block">
+      <h2 class="section-title-sm">Leave a Message</h2>
+      <p class="body-text">Fill out your details and your message below. A representative will reach out to you shortly.</p>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <div class="field">
+        <label>Name</label>
+        <input type="text" placeholder="Your Full Name">
+      </div>
+      <div class="field">
+        <label>Email Address</label>
+        <input type="email" placeholder="Your Email Address">
+      </div>
+      <div class="field">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="Your Phone Number">
+      </div>
+      <div class="field">
+        <label>Subject</label>
+        <input type="text" placeholder="What is your enquiry regarding?">
+      </div>
+      <div class="field">
+        <label>Message</label>
+        <textarea rows="4" placeholder="Type your message here..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-dark btn-full">Send Message</button>
+    </form>
+  </div>
+
+  <div class="contact-info-side">
+    <div class="info-block">
+      <h2 class="section-title-sm">Contact Information</h2>
+      <div class="details-list">
+        <div class="detail-row">
+          <img src="images/19746466-12f6-4c9a-bd8d-87ca3dd5c25b.svg" alt="" class="icon-md" decoding="async" loading="eager" fetchpriority="high">
+          <div>
+            <p class="detail-label">Location</p>
+            <p class="detail-value">Kuto, Abeokuta, Ogun State, Nigeria</p>
+          </div>
+        </div>
+        <div class="detail-row">
+          <img src="images/3601d451-6c7c-473a-890a-939c02c6b197.svg" alt="" class="icon-md" decoding="async" loading="lazy">
+          <div>
+            <p class="detail-label">Phone Numbers</p>
+            <p class="detail-value">+234 800 123 4567 / +234 1 277 3500</p>
+          </div>
+        </div>
+        <div class="detail-row">
+          <img src="images/74144529-dd49-4ddf-b3a7-74ea4766665f.svg" alt="" class="icon-md" decoding="async" loading="lazy">
+          <div>
+            <p class="detail-label">Emails</p>
+            <p class="detail-value">info@aaentertainment.com / reservations@aa-entertainment.com</p>
+          </div>
+        </div>
+        <div class="detail-row">
+          <img src="images/b5d2a684-5f1e-4020-a69f-72a1266dfaa0.svg" alt="" class="icon-md" decoding="async" loading="lazy">
+          <div>
+            <p class="detail-label">Business Hours</p>
+            <p class="detail-value">Monday - Sunday: 24 Hours Operative</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-placeholder" id="location" style="background-image:url('images/a8b3598d-51b4-4c3f-b714-68affff67737.webp');">
+      <div class="map-banner">
+        <img src="images/19746466-12f6-4c9a-bd8d-87ca3dd5c25b.svg" alt="" class="icon-sm" decoding="async" loading="lazy">
+        <span>AA Entertainment, Kuto, Abeokuta</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT BAR ============ -->
+<div class="contact-bar">
+  <div class="contact-item">
+    <img src="images/62b5f932-1232-4345-ac8d-4dd5aadaedaf.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>Kuto, Abeokuta, Ogun State</span>
+  </div>
+  <div class="contact-item">
+    <img src="images/afa740b3-3b7d-4bef-aba5-4e374db01f58.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>+234 1 277 3500</span>
+  </div>
+  <div class="contact-item">
+    <img src="images/0393ff0c-dbc1-42e8-aa89-937a1b6c5047.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>reservations@aa-entertainment.com</span>
+  </div>
+  <a href="#" class="contact-item whatsapp">
+    <img src="images/1243f857-96a1-4683-a63f-abb725bbb788.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>WhatsApp Chat</span>
+  </a>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img footer-logo" decoding="async" loading="lazy">
+      <p class="body-text light">Experience the timeless spirit of Abeokuta beautifully balanced with understated elegance and warm-luxe African hospitality. A premium sanctuary designed for global business and leisure tastemakers.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <p class="footer-col-title">Explore</p>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="rooms-listing.html">Rooms</a>
+        <a href="restaurant.html">Restaurant</a>
+        <a href="spa.html">Spa &amp; Wellness</a>
+        <a href="cafe.html">Caf&eacute;</a>
+        <a href="boutique.html">Boutique</a>
+        <a href="events.html">Events &amp; Conferences</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Legal &amp; Info</p>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">FAQs</a>
+        <a href="#">Careers</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="footer-divider">
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 AA Entertainment Limited. All rights reserved. Kuto, Abeokuta, Ogun State.</p>
+    <div class="socials">
+      <a href="#" class="social-icon" aria-label="Instagram"><img src="images/5b1c0944-a2c6-4e0b-9357-80bdd8543e3b.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="Facebook"><img src="images/4ed3331d-f6f0-4c04-80f1-e1abc1f9774a.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="Twitter"><img src="images/4eac8d49-e25e-450a-a745-59e40fa336d8.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="LinkedIn"><img src="images/3053ae93-17fe-474e-99a6-00f83bb463b0.svg" alt="" decoding="async" loading="lazy"></a>
+    </div>
+  </div>
+</footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rooms &amp; Suites | AA Entertainment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav-bar">
+  <a href="index.html" class="logo-link">
+    <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img" decoding="async" loading="eager" fetchpriority="high">
+  </a>
+  <nav class="nav-links">
+    <a href="rooms-listing.html" class="active">Stay</a>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">Dine</button>
+      <div class="nav-dropdown-panel">
+        <a href="restaurant.html">Restaurant</a>
+        <a href="cafe.html">Caf&eacute;</a>
+      </div>
+    </div>
+
+    <a href="spa.html" >Wellness</a>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">Events</button>
+      <div class="nav-dropdown-panel">
+        <a href="events.html#event-halls">Event Halls</a>
+        <a href="events.html#event-types">Weddings &amp; Ceremonies</a>
+        <a href="events.html#event-types">Meetings &amp; Conferences</a>
+        <a href="events.html#event-enquiry">Event Enquiry</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">Discover</button>
+      <div class="nav-dropdown-panel">
+        <a href="gallery.html">Gallery</a>
+        <a href="boutique.html">Boutique</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <button type="button" class="nav-trigger">About</button>
+      <div class="nav-dropdown-panel">
+        <a href="about.html">About the Hotel</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html#location">Location</a>
+      </div>
+    </div>
+  </nav>
+  <a href="reservation.html" class="btn btn-dark nav-cta">Reserve Stay</a>
+  <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <div class="mnav-header">
+    <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img footer-logo" decoding="async" loading="lazy">
+    <button type="button" class="mnav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="mnav-body">
+    <a href="reservation.html" class="btn btn-gold mnav-cta">Reserve Stay</a>
+
+    <a href="rooms-listing.html" class="mnav-link">Stay</a>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Dine</button>
+      <div class="mnav-sublist">
+        <a href="restaurant.html">Restaurant</a>
+        <a href="cafe.html">Caf&eacute;</a>
+      </div>
+    </div>
+
+    <a href="spa.html" class="mnav-link">Wellness</a>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Events</button>
+      <div class="mnav-sublist">
+        <a href="events.html#event-halls">Event Halls</a>
+        <a href="events.html#event-types">Weddings &amp; Ceremonies</a>
+        <a href="events.html#event-types">Meetings &amp; Conferences</a>
+        <a href="events.html#event-enquiry">Event Enquiry</a>
+      </div>
+    </div>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">Discover</button>
+      <div class="mnav-sublist">
+        <a href="gallery.html">Gallery</a>
+        <a href="boutique.html">Boutique</a>
+      </div>
+    </div>
+
+    <div class="mnav-group">
+      <button type="button" class="mnav-group-trigger">About</button>
+      <div class="mnav-sublist">
+        <a href="about.html">About the Hotel</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html#location">Location</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ LISTING HEADER ============ -->
+<section class="listing-header">
+  <div class="eyebrow">
+    <span class="eyebrow-line"></span>
+    <span>Accommodations</span>
+  </div>
+  <h1 class="section-title listing-title">Our Rooms &amp; Suites</h1>
+  <p class="body-text listing-subtitle">Every room is crafted to serve as a deep sensory retreat. Experience soft lighting, natural textiles, and absolute silence right in Abeokuta.</p>
+</section>
+
+<!-- ============ AMENITIES STRIP ============ -->
+<div class="amenities-strip">
+  <div class="amenity"><img src="images/79064587-40fe-4af3-bd18-436ccb435708.svg" alt="" class="icon" decoding="async" loading="eager" fetchpriority="high"><span>Ultra Fiber WiFi</span></div>
+  <div class="amenity"><img src="images/939168cf-bf01-4193-b23a-04a750748cd8.svg" alt="" class="icon" decoding="async" loading="lazy"><span>Central AC</span></div>
+  <div class="amenity"><img src="images/c55306d6-2ca8-40b0-a491-b802bab4286e.svg" alt="" class="icon" decoding="async" loading="lazy"><span>24/7 Room Service</span></div>
+  <div class="amenity"><img src="images/6681ae90-ad67-4c06-9659-c6fd2f4d58ac.svg" alt="" class="icon" decoding="async" loading="lazy"><span>Valet Parking</span></div>
+  <div class="amenity"><img src="images/399d2fb4-76c9-45f6-a95c-9610391c3f53.svg" alt="" class="icon" decoding="async" loading="lazy"><span>Elite Security</span></div>
+  <div class="amenity"><img src="images/df6cdaf8-4774-474e-bae4-cbac737d8e2e.svg" alt="" class="icon" decoding="async" loading="lazy"><span>Luxury Laundry</span></div>
+</div>
+
+<!-- ============ ROOMS GRID ============ -->
+<section class="rooms-grid-container">
+  <div class="rooms-row">
+    <article class="room-card">
+      <div class="room-image"><img src="images/7a0c92f4-46a4-40fa-87fb-391c3608dd8b.webp" alt="Standard Room" decoding="async" loading="lazy"></div>
+      <div class="room-content">
+        <h3>Standard Room</h3>
+        <p>Timeless classic style featuring premium work desk, high-speed fiber internet, and luxury en-suite shower.</p>
+      </div>
+      <div class="room-footer">
+        <div class="price-display"><span class="price-label">Starting from</span><span class="price-amount">&#8358;120,000 / Night</span></div>
+        <a href="room-detail.html" class="btn btn-dark btn-sm">Book Now</a>
+      </div>
+    </article>
+    <article class="room-card">
+      <div class="room-image"><img src="images/b30ec291-8184-4c99-a874-5ffe951734e0.webp" alt="Deluxe Room" decoding="async" loading="lazy"></div>
+      <div class="room-content">
+        <h3>Deluxe Room</h3>
+        <p>Enriched with beautiful indigenous art, soft ambient lighting system, and partial views of Olumo Rock and the Abeokuta hills.</p>
+      </div>
+      <div class="room-footer">
+        <div class="price-display"><span class="price-label">Starting from</span><span class="price-amount">&#8358;150,000 / Night</span></div>
+        <a href="room-detail.html" class="btn btn-dark btn-sm">Book Now</a>
+      </div>
+    </article>
+    <article class="room-card">
+      <div class="room-image"><img src="images/431b001d-ff86-4356-98be-85eeb39c11de.webp" alt="Deluxe Suite" decoding="async" loading="lazy"></div>
+      <div class="room-content">
+        <h3>Deluxe Suite</h3>
+        <p>A beautifully expanded open suite offering a plush dedicated lounge area, espresso machine, and king bedding.</p>
+      </div>
+      <div class="room-footer">
+        <div class="price-display"><span class="price-label">Starting from</span><span class="price-amount">&#8358;180,000 / Night</span></div>
+        <a href="room-detail.html" class="btn btn-dark btn-sm">Book Now</a>
+      </div>
+    </article>
+  </div>
+
+  <div class="rooms-row">
+    <article class="room-card room-card-wide">
+      <div class="room-image"><img src="images/2db52a31-4e6d-4812-8f33-0a45ca06be62.webp" alt="Executive Suite" decoding="async" loading="lazy"></div>
+      <div class="room-content">
+        <h3>Executive Suite</h3>
+        <p>The premier corporate sanctuary featuring a separate boardroom table, standalone bath, and private butler service.</p>
+      </div>
+      <div class="room-footer">
+        <div class="price-display"><span class="price-label">Starting from</span><span class="price-amount">&#8358;250,000 / Night</span></div>
+        <a href="room-detail.html" class="btn btn-dark btn-sm">Book Now</a>
+      </div>
+    </article>
+    <article class="room-card room-card-wide">
+      <div class="room-image"><img src="images/35e11206-ee59-4d2c-8e13-b5810c0b4588.webp" alt="Presidential Suite" decoding="async" loading="lazy"></div>
+      <div class="room-content">
+        <h3>Presidential Suite</h3>
+        <p>Our ultimate residence. Dual lounges, private terrace with lagoon views, private chef dining options, and extreme security access control.</p>
+      </div>
+      <div class="room-footer">
+        <div class="price-display"><span class="price-label">Starting from</span><span class="price-amount">&#8358;450,000 / Night</span></div>
+        <a href="room-detail.html" class="btn btn-dark btn-sm">Book Now</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ CONTACT BAR ============ -->
+<div class="contact-bar">
+  <div class="contact-item">
+    <img src="images/466810ce-ec3b-4593-bb4d-a1b3be57b919.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>Kuto, Abeokuta, Ogun State</span>
+  </div>
+  <div class="contact-item">
+    <img src="images/138f39ba-afc1-419a-b1df-a4dc45382be8.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>+234 1 277 3500</span>
+  </div>
+  <div class="contact-item">
+    <img src="images/aa376a4a-05d4-4dff-be98-71c1e784eb49.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>reservations@aa-entertainment.com</span>
+  </div>
+  <a href="#" class="contact-item whatsapp">
+    <img src="images/e0586592-b6be-47ed-8804-3b5a27e23923.svg" alt="" class="icon" decoding="async" loading="lazy">
+    <span>WhatsApp Chat</span>
+  </a>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="images/brand-logo-transparent.webp" alt="AA Entertainment" class="brand-logo-img footer-logo" decoding="async" loading="lazy">
+      <p class="body-text light">Experience the timeless spirit of Abeokuta beautifully balanced with understated elegance and warm-luxe African hospitality. A premium sanctuary designed for global business and leisure tastemakers.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <p class="footer-col-title">Explore</p>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="rooms-listing.html">Rooms</a>
+        <a href="restaurant.html">Restaurant</a>
+        <a href="spa.html">Spa &amp; Wellness</a>
+        <a href="cafe.html">Caf&eacute;</a>
+        <a href="boutique.html">Boutique</a>
+        <a href="events.html">Events &amp; Conferences</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Legal &amp; Info</p>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">FAQs</a>
+        <a href="#">Careers</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="footer-divider">
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 AA Entertainment Limited. All rights reserved. Kuto, Abeokuta, Ogun State.</p>
+    <div class="socials">
+      <a href="#" class="social-icon" aria-label="Instagram"><img src="images/ab59b8b6-5dbd-4412-8e63-1e4dd5bd321c.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="Facebook"><img src="images/f10eb8fd-aa4a-47e8-9e13-a7d66824980d.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="Twitter"><img src="images/221bdc8b-4f25-48b1-9e0c-a6b09fd22eaa.svg" alt="" decoding="async" loading="lazy"></a>
+      <a href="#" class="social-icon" aria-label="LinkedIn"><img src="images/2f8f64c5-2cf6-40eb-b245-5769f5620da2.svg" alt="" decoding="async" loading="lazy"></a>
+    </div>
+  </div>
+</footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>
