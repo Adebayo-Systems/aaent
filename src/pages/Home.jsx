@@ -58,11 +58,19 @@ export default function Home() {
 
         <div className="rooms-row">
           <article className="room-card">
-            <div className="room-image">
+            <Link to="/room-detail?room=standard-room" className="room-image" style={{ display: 'block' }}>
               <img src="/images/73e7ae62-091a-41f2-b125-9f842893bb0b.webp" alt="Standard Room" decoding="async" loading="lazy" />
-            </div>
+              <span className="room-badge">Standard</span>
+            </Link>
             <div className="room-content">
-              <h3>Standard Room</h3>
+              <h3>
+                <Link to="/room-detail?room=standard-room" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  Standard Room
+                </Link>
+              </h3>
+              <div className="room-specs-meta">
+                <span>40 m² • Queen Bed • Max 2 Guests</span>
+              </div>
               <p>Timeless elegance meets modern comfort. Fitted with premium work desk and plush king bedding.</p>
             </div>
             <div className="room-footer">
@@ -70,16 +78,31 @@ export default function Home() {
                 <span className="price-label">Starting from</span>
                 <span className="price-amount">&#8358;120,000 / Night</span>
               </div>
-              <Link to="/room-detail" className="btn btn-dark btn-sm">Book Now</Link>
+              <div className="room-footer-actions">
+                <Link to="/room-detail?room=standard-room" className="btn btn-outline-dark btn-sm">
+                  View Details
+                </Link>
+                <Link to="/reservation?room=standard-room" className="btn btn-dark btn-sm">
+                  Book Now
+                </Link>
+              </div>
             </div>
           </article>
 
           <article className="room-card">
-            <div className="room-image">
+            <Link to="/room-detail?room=deluxe-suite" className="room-image" style={{ display: 'block' }}>
               <img src="/images/6c9fca76-5902-4e7d-84a3-6f041a27b324.webp" alt="Deluxe Suite" decoding="async" loading="lazy" />
-            </div>
+              <span className="room-badge">Deluxe</span>
+            </Link>
             <div className="room-content">
-              <h3>Deluxe Suite</h3>
+              <h3>
+                <Link to="/room-detail?room=deluxe-suite" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  Deluxe Suite
+                </Link>
+              </h3>
+              <div className="room-specs-meta">
+                <span>65 m² • King Bed • Max 2 Adults, 1 Child</span>
+              </div>
               <p>Expanded layout offering a distinct lounge area, luxury African art details, and city views.</p>
             </div>
             <div className="room-footer">
@@ -87,16 +110,31 @@ export default function Home() {
                 <span className="price-label">Starting from</span>
                 <span className="price-amount">&#8358;180,000 / Night</span>
               </div>
-              <Link to="/room-detail" className="btn btn-dark btn-sm">Book Now</Link>
+              <div className="room-footer-actions">
+                <Link to="/room-detail?room=deluxe-suite" className="btn btn-outline-dark btn-sm">
+                  View Details
+                </Link>
+                <Link to="/reservation?room=deluxe-suite" className="btn btn-dark btn-sm">
+                  Book Now
+                </Link>
+              </div>
             </div>
           </article>
 
           <article className="room-card">
-            <div className="room-image">
+            <Link to="/room-detail?room=executive-suite" className="room-image" style={{ display: 'block' }}>
               <img src="/images/9bd67c4d-7ea5-40d0-a5d6-cc3249dcdf8e.webp" alt="Executive Suite" decoding="async" loading="lazy" />
-            </div>
+              <span className="room-badge">Executive</span>
+            </Link>
             <div className="room-content">
-              <h3>Executive Suite</h3>
+              <h3>
+                <Link to="/room-detail?room=executive-suite" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  Executive Suite
+                </Link>
+              </h3>
+              <div className="room-specs-meta">
+                <span>85 m² • Master King • Max 3 Guests</span>
+              </div>
               <p>An elite residence featuring a fully equipped lounge, deep soak bathtub, and bespoke butler service.</p>
             </div>
             <div className="room-footer">
@@ -104,7 +142,14 @@ export default function Home() {
                 <span className="price-label">Starting from</span>
                 <span className="price-amount">&#8358;250,000 / Night</span>
               </div>
-              <Link to="/room-detail" className="btn btn-dark btn-sm">Book Now</Link>
+              <div className="room-footer-actions">
+                <Link to="/room-detail?room=executive-suite" className="btn btn-outline-dark btn-sm">
+                  View Details
+                </Link>
+                <Link to="/reservation?room=executive-suite" className="btn btn-dark btn-sm">
+                  Book Now
+                </Link>
+              </div>
             </div>
           </article>
         </div>

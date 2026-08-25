@@ -258,6 +258,9 @@ export default function RoomDetail() {
               <article key={r.id} className="room-card">
                 <Link to={`/room-detail?room=${r.id}`} className="room-image" style={{ display: 'block' }}>
                   <img src={r.mainImage} alt={r.name} decoding="async" loading="lazy" />
+                  {r.category && (
+                    <span className="room-badge">{r.category}</span>
+                  )}
                 </Link>
                 <div className="room-content">
                   <h3>
@@ -265,6 +268,9 @@ export default function RoomDetail() {
                       {r.name}
                     </Link>
                   </h3>
+                  <div className="room-specs-meta">
+                    <span>{r.size} • {r.guests}</span>
+                  </div>
                   <p>{r.description.slice(0, 100)}...</p>
                 </div>
                 <div className="room-footer">
@@ -272,9 +278,9 @@ export default function RoomDetail() {
                     <span className="price-label">Starting from</span>
                     <span className="price-amount">{r.rate} / Night</span>
                   </div>
-                  <div style={{ display: 'flex', gap: '8px' }}>
+                  <div className="room-footer-actions">
                     <Link to={`/room-detail?room=${r.id}`} className="btn btn-outline-dark btn-sm">
-                      View Room
+                      View Details
                     </Link>
                     <Link to={`/reservation?room=${r.id}`} className="btn btn-dark btn-sm">
                       Book Now

@@ -1,14 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { SlidersHorizontal, Check, ChevronDown } from 'lucide-react';
 import { useData } from '../context/DataContext';
+
+const FILTER_OPTIONS = [
+  { key: 'all', label: 'All Rooms & Suites' },
+  { key: 'standard', label: 'Standard Rooms' },
+  { key: 'deluxe', label: 'Deluxe Suites' },
+  { key: 'executive', label: 'Executive Suites' },
+  { key: 'presidential', label: 'Presidential Suites' },
+];
 
 export default function RoomsListing() {
   const { rooms } = useData();
   const [activeFilter, setActiveFilter] = useState('all');
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const filterRef = useRef(null);
+
+  // Close filter popover on outside click
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (filterRef.current && !filterRef.current.contains(event.target)) {
+        setIsFilterOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const filteredRooms = activeFilter === 'all'
     ? rooms
     : rooms.filter((room) => room.category === activeFilter);
+
+  const currentOption = FILTER_OPTIONS.find((opt) => opt.key === activeFilter);
+  const currentFilterLabel = currentOption ? currentOption.label : 'All Rooms & Suites';
 
   return (
     <main>
@@ -23,19 +48,49 @@ export default function RoomsListing() {
           Every room is crafted to serve as a deep sensory retreat. Experience soft lighting, natural textiles, and absolute silence right in Abeokuta.
         </p>
 
-        {/* Filter Controls */}
-        <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-start', flexWrap: 'wrap', marginTop: '24px' }}>
-          {['all', 'standard', 'deluxe', 'executive', 'presidential'].map((filterKey) => (
-            <button
-              key={filterKey}
-              type="button"
-              className={`btn btn-sm ${activeFilter === filterKey ? 'btn-gold' : 'btn-outline-dark'}`}
-              onClick={() => setActiveFilter(filterKey)}
-              style={{ textTransform: 'capitalize' }}
-            >
-              {filterKey === 'all' ? 'All Rooms & Suites' : `${filterKey} Suites`}
-            </button>
-          ))}
+        {/* Filter Popup Trigger */}
+        <div className="rooms-filter-container" ref={filterRef}>
+          <button
+            type="button"
+            className={`rooms-filter-trigger ${isFilterOpen ? 'open' : ''}`}
+            onClick={() => setIsFilterOpen(!isFilterOpen)}
+            aria-expanded={isFilterOpen}
+            aria-label="Filter accommodations"
+          >
+            <SlidersHorizontal size={15} />
+            <span>{currentFilterLabel}</span>
+            <span className="filter-badge">{filteredRooms.length}</span>
+            <ChevronDown size={14} style={{ transform: isFilterOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s ease' }} />
+          </button>
+
+          {isFilterOpen && (
+            <div className="rooms-filter-popover" role="menu">
+              {FILTER_OPTIONS.map((opt) => {
+                const count = opt.key === 'all'
+                  ? rooms.length
+                  : rooms.filter((r) => r.category === opt.key).length;
+                const isActive = activeFilter === opt.key;
+
+                return (
+                  <button
+                    key={opt.key}
+                    type="button"
+                    className={`filter-option-btn ${isActive ? 'active' : ''}`}
+                    onClick={() => {
+                      setActiveFilter(opt.key);
+                      setIsFilterOpen(false);
+                    }}
+                  >
+                    <span>{opt.label}</span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: isActive ? 'var(--color-gold)' : 'var(--color-text-light)' }}>
+                      <span>({count})</span>
+                      {isActive && <Check size={14} />}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
 
@@ -70,35 +125,49 @@ export default function RoomsListing() {
       {/* ROOMS GRID */}
       <section className="rooms-grid-container">
         <div className="rooms-row">
-          {filteredRooms.map((room) => (
-            <article key={room.id} className={`room-card ${room.isWide ? 'room-card-wide' : ''}`}>
-              <Link to={`/room-detail?room=${room.id}`} className="room-image" style={{ display: 'block' }}>
-                <img src={room.image} alt={room.name} decoding="async" loading="lazy" />
-              </Link>
-              <div className="room-content">
-                <h3>
-                  <Link to={`/room-detail?room=${room.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                    {room.name}
-                  </Link>
-                </h3>
-                <p>{room.description}</p>
-              </div>
-              <div className="room-footer" style={{ gap: '12px', flexWrap: 'wrap' }}>
-                <div className="price-display" style={{ marginRight: 'auto' }}>
-                  <span className="price-label">Starting from</span>
-                  <span className="price-amount">{room.price}</span>
+          {filteredRooms.map((room) => {
+            const specs = room.features && room.features.length > 0
+              ? room.features.slice(0, 3).join(' • ')
+              : null;
+
+            return (
+              <article key={room.id} className="room-card">
+                <Link to={`/room-detail?room=${room.id}`} className="room-image" style={{ display: 'block' }}>
+                  <img src={room.image} alt={room.name} decoding="async" loading="lazy" />
+                  {room.category && (
+                    <span className="room-badge">{room.category}</span>
+                  )}
+                </Link>
+                <div className="room-content">
+                  <h3>
+                    <Link to={`/room-detail?room=${room.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                      {room.name}
+                    </Link>
+                  </h3>
+                  {specs && (
+                    <div className="room-specs-meta">
+                      <span>{specs}</span>
+                    </div>
+                  )}
+                  <p>{room.description}</p>
                 </div>
-                <div style={{ display: 'flex', gap: '8px' }}>
-                  <Link to={`/room-detail?room=${room.id}`} className="btn btn-outline-dark btn-sm">
-                    View Details
-                  </Link>
-                  <Link to={`/reservation?room=${room.id}`} className="btn btn-dark btn-sm">
-                    Book Now
-                  </Link>
+                <div className="room-footer">
+                  <div className="price-display">
+                    <span className="price-label">Starting from</span>
+                    <span className="price-amount">{room.price}</span>
+                  </div>
+                  <div className="room-footer-actions">
+                    <Link to={`/room-detail?room=${room.id}`} className="btn btn-outline-dark btn-sm">
+                      View Details
+                    </Link>
+                    <Link to={`/reservation?room=${room.id}`} className="btn btn-dark btn-sm">
+                      Book Now
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </section>
     </main>
