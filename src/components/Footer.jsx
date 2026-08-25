@@ -51,9 +51,9 @@ export default function Footer() {
               <Link to="/contact">Terms &amp; Conditions</Link>
               <Link to="/contact">FAQs</Link>
               <Link to="/contact">Contact</Link>
-              <Link to="/admin" style={{ color: 'var(--color-brand-red)', fontWeight: '600', marginTop: '4px' }}>
+              {/* <Link to="/admin" style={{ color: 'var(--color-brand-red)', fontWeight: '600', marginTop: '4px' }}>
                 🔒 Admin Portal
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
