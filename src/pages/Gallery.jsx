@@ -40,38 +40,27 @@ export default function Gallery() {
       </div>
 
       {/* GALLERY GRID */}
-      <section className="gallery-grid-container" style={{ paddingBottom: '80px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
+      <section className="gallery-grid-container">
+        <div className="gallery-photos-grid">
           {filteredItems.map((item) => {
             const imgSrc = item.image || item.src;
             return (
               <div
                 key={item.id}
-                className="gallery-photo"
+                className="gallery-photo-card"
                 onClick={() => setLightboxImg({ ...item, src: imgSrc })}
-                style={{ cursor: 'pointer', height: '260px', overflow: 'hidden', borderRadius: '4px', position: 'relative' }}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && setLightboxImg({ ...item, src: imgSrc })}
               >
                 <img
                   src={imgSrc}
                   alt={item.title}
                   decoding="async"
                   loading="lazy"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }}
                 />
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%)',
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    padding: '16px',
-                    color: '#fff',
-                    fontSize: '14px',
-                    fontWeight: 600,
-                  }}
-                >
-                  {item.title}
+                <div className="gallery-photo-overlay">
+                  <span>{item.title}</span>
                 </div>
               </div>
             );
