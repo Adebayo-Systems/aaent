@@ -37,7 +37,7 @@ export default function Events() {
 
       {/* VENUES */}
       <section className="venues-section" id="event-halls">
-        <div className="listing-header">
+        <div className="section-header">
           <div className="eyebrow">
             <span className="eyebrow-line"></span>
             <span>The Venues</span>
@@ -137,14 +137,14 @@ export default function Events() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ marginTop: '24px', display: 'grid', gap: '16px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '14px' }}>
                 <input
                   type="text"
                   placeholder="Full Name"
                   required
                   value={formState.name}
                   onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)' }}
+                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)', fontFamily: 'var(--font-sans)' }}
                 />
                 <input
                   type="email"
@@ -152,23 +152,23 @@ export default function Events() {
                   required
                   value={formState.email}
                   onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)' }}
+                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)', fontFamily: 'var(--font-sans)' }}
                 />
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '14px' }}>
                 <input
                   type="tel"
                   placeholder="Phone Number"
                   required
                   value={formState.phone}
                   onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
-                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)' }}
+                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)', fontFamily: 'var(--font-sans)' }}
                 />
                 <select
                   value={formState.eventType}
                   onChange={(e) => setFormState({ ...formState, eventType: e.target.value })}
-                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)' }}
+                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)', fontFamily: 'var(--font-sans)' }}
                 >
                   <option value="corporate">Corporate Summit</option>
                   <option value="wedding">Wedding / Ceremony</option>
@@ -180,7 +180,7 @@ export default function Events() {
                   required
                   value={formState.date}
                   onChange={(e) => setFormState({ ...formState, date: e.target.value })}
-                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)' }}
+                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)', fontFamily: 'var(--font-sans)' }}
                 />
               </div>
 
