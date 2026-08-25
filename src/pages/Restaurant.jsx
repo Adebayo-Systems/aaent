@@ -160,11 +160,11 @@ export default function Restaurant() {
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)' }}
               />
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '12px' }}>
                 <select
                   value={formData.guests}
                   onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
-                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)' }}
+                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)', fontFamily: 'var(--font-sans)' }}
                 >
                   <option value="1">1 Guest</option>
                   <option value="2">2 Guests</option>
@@ -176,14 +176,14 @@ export default function Restaurant() {
                   required
                   value={formData.date}
                   onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)' }}
+                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)', fontFamily: 'var(--font-sans)' }}
                 />
                 <input
                   type="time"
                   required
                   value={formData.time}
                   onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)' }}
+                  style={{ padding: '14px', borderRadius: '4px', border: '1px solid var(--color-border)', fontFamily: 'var(--font-sans)' }}
                 />
               </div>
               <button type="submit" className="btn btn-gold" style={{ marginTop: '12px' }}>

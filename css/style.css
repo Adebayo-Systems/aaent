@@ -1218,7 +1218,7 @@ a {
   display: flex;
   gap: 80px;
   align-items: center;
-  padding: 120px 80px;
+  padding: 120px var(--container-px);
 }
 
 .link-row {
@@ -1227,6 +1227,7 @@ a {
   font-size: 14px;
   text-decoration: underline;
   margin-top: 4px;
+  display: inline-block;
 }
 
 .hours-card {
@@ -1269,7 +1270,7 @@ a {
 
 .featured-dishes {
   background: var(--color-bg-alt);
-  padding: 120px 80px;
+  padding: 120px var(--container-px);
   display: flex;
   flex-direction: column;
   gap: 56px;
@@ -2635,12 +2636,24 @@ body.nav-lock-scroll {
   }
 
   .dishes-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    width: 100%;
   }
 
   .dish-card {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .dish-img {
+    width: 100%;
+    height: 190px;
+    border-radius: 4px;
+    overflow: hidden;
   }
 
   .venue-row {
@@ -3006,6 +3019,48 @@ body.nav-lock-scroll {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Restaurant — Dining */
+  .hours-split {
+    padding: 48px var(--container-px);
+    gap: 32px;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hours-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 28px 20px;
+  }
+
+  .featured-dishes {
+    padding: 48px var(--container-px);
+    gap: 32px;
+  }
+
+  .dishes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    width: 100%;
+  }
+
+  .dish-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    width: 100%;
+  }
+
+  .dish-img {
+    width: 100%;
+    height: 160px;
+  }
+
+  .dish-title-price h4 {
+    font-size: 18px;
+  }
+
   /* Contact Bar */
   .contact-bar {
     padding: 20px var(--container-px);
@@ -3204,6 +3259,51 @@ body.nav-lock-scroll {
 
   .alternatives-section .rooms-row {
     grid-template-columns: 1fr;
+  }
+
+  /* Restaurant — Dining (Small Mobile) */
+  .hero-lg {
+    height: auto;
+    min-height: 440px;
+  }
+
+  .hours-split {
+    padding: 36px var(--container-px);
+  }
+
+  .hours-card {
+    padding: 20px 16px;
+  }
+
+  .slot-row {
+    font-size: 13px;
+  }
+
+  .featured-dishes {
+    padding: 36px var(--container-px);
+  }
+
+  .dishes-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .dish-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .dish-img {
+    width: 100%;
+    height: 180px;
+  }
+
+  .dish-title-price h4 {
+    font-size: 18px;
   }
 
   /* Bento */
