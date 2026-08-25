@@ -1916,8 +1916,8 @@ a {
    ============================================= */
 .reservation-split-panel {
   display: flex;
-  gap: 64px;
-  padding: 80px;
+  gap: 48px;
+  padding: 80px var(--container-px);
   align-items: flex-start;
 }
 
@@ -1946,8 +1946,9 @@ a {
 }
 
 .input-row {
-  display: flex;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 .input-row-thirds .field-wrap {
@@ -2013,20 +2014,23 @@ a {
 }
 
 .side-panel {
-  width: 400px;
+  width: 380px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 24px;
+  position: sticky;
+  top: 116px;
 }
 
 .benefits-card {
-  background: var(--color-bg-alt);
+  background: #fff;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
-  padding: 40px;
+  padding: 28px 24px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 
 .benefits-card h3,
@@ -2905,12 +2909,20 @@ body.nav-lock-scroll {
   }
 
   .reservation-split-panel {
-    flex-direction: column;
-    padding: 40px;
+    flex-direction: column-reverse;
+    padding: 60px var(--container-px);
+    gap: 36px;
+    width: 100%;
+  }
+
+  .form-container {
+    width: 100%;
+    padding: 36px 28px;
   }
 
   .side-panel {
     width: 100%;
+    position: static;
   }
 
   .input-row,
@@ -3388,6 +3400,20 @@ body.nav-lock-scroll {
     padding: 24px 20px;
   }
 
+  /* Reservation (Tablet) */
+  .reservation-split-panel {
+    padding: 48px var(--container-px);
+    gap: 32px;
+  }
+
+  .form-container {
+    padding: 28px 20px;
+  }
+
+  .benefits-card {
+    padding: 24px 20px;
+  }
+
   /* Contact Page (Tablet) */
   .contact-split {
     padding: 48px var(--container-px);
@@ -3801,6 +3827,33 @@ body.nav-lock-scroll {
 
   .diff-card h4 {
     font-size: 19px;
+  }
+
+  /* Reservation (Small Mobile) */
+  .reservation-split-panel {
+    padding: 36px var(--container-px);
+    gap: 24px;
+  }
+
+  .form-container {
+    padding: 20px 16px;
+    border-radius: 6px;
+  }
+
+  .input-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .field-wrap input,
+  .field-wrap select,
+  .field-wrap textarea {
+    padding: 12px 14px;
+    font-size: 13.5px;
+  }
+
+  .benefits-card {
+    padding: 20px 16px;
   }
 
   /* Contact Page (Small Mobile) */

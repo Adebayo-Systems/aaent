@@ -142,7 +142,7 @@ export default function Reservation() {
       </section>
 
       {/* RESERVATION SPLIT PANEL */}
-      <section className="reservation-split-panel" style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: '40px', padding: '60px var(--container-px)' }}>
+      <section className="reservation-split-panel">
         <div className="form-container">
           <div className="form-header">
             <h2 className="section-title-sm">Booking Request Form</h2>
@@ -166,8 +166,8 @@ export default function Reservation() {
               </button>
             </div>
           ) : (
-            <form className="booking-form" onSubmit={handleSubmit} style={{ display: 'grid', gap: '24px' }}>
-              <div className="input-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            <form className="booking-form" onSubmit={handleSubmit} style={{ display: 'grid', gap: '20px' }}>
+              <div className="input-row">
                 <div className="field-wrap">
                   <label htmlFor="fullName">Full Name</label>
                   <input
@@ -177,7 +177,6 @@ export default function Reservation() {
                     placeholder="e.g. Alaba Kolade"
                     value={form.fullName}
                     onChange={(e) => setForm({ ...form, fullName: e.target.value })}
-                    style={{ width: '100%', padding: '14px', border: '1px solid var(--color-border)', borderRadius: '2px' }}
                   />
                 </div>
                 <div className="field-wrap">
@@ -189,12 +188,11 @@ export default function Reservation() {
                     placeholder="e.g. alaba@company.com"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    style={{ width: '100%', padding: '14px', border: '1px solid var(--color-border)', borderRadius: '2px' }}
                   />
                 </div>
               </div>
 
-              <div className="input-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <div className="input-row">
                 <div className="field-wrap">
                   <label htmlFor="phone">Phone Number</label>
                   <input
@@ -204,7 +202,6 @@ export default function Reservation() {
                     placeholder="e.g. +234 803 123 4567"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    style={{ width: '100%', padding: '14px', border: '1px solid var(--color-border)', borderRadius: '2px' }}
                   />
                 </div>
                 <div className="field-wrap">
@@ -214,7 +211,6 @@ export default function Reservation() {
                     required
                     value={form.roomPreference}
                     onChange={(e) => setForm({ ...form, roomPreference: e.target.value })}
-                    style={{ width: '100%', padding: '14px', border: '1px solid var(--color-border)', borderRadius: '2px' }}
                   >
                     <option value="Standard Room">Standard Room (₦120,000 / Night)</option>
                     <option value="Deluxe Room">Deluxe Room (₦150,000 / Night)</option>
@@ -244,7 +240,6 @@ export default function Reservation() {
                   id="guests"
                   value={form.guests}
                   onChange={(e) => setForm({ ...form, guests: e.target.value })}
-                  style={{ width: '100%', padding: '14px', border: '1px solid var(--color-border)', borderRadius: '2px' }}
                 >
                   <option value="1 Guest">1 Guest</option>
                   <option value="2 Guests">2 Guests</option>
@@ -254,24 +249,26 @@ export default function Reservation() {
               </div>
 
               {/* Add-ons */}
-              <div style={{ padding: '16px', background: 'var(--color-bg-alt)', borderRadius: '4px' }}>
-                <label style={{ fontWeight: 600, display: 'block', marginBottom: '12px' }}>Bespoke Enhancements</label>
+              <div style={{ padding: '16px 20px', background: 'var(--color-bg-alt)', borderRadius: '4px', border: '1px solid var(--color-border)' }}>
+                <label style={{ fontWeight: 600, display: 'block', marginBottom: '12px', fontSize: '12px', textTransform: 'uppercase', color: 'var(--color-dark)' }}>
+                  Bespoke Enhancements
+                </label>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', fontSize: '13.5px' }}>
                     <input
                       type="checkbox"
                       checked={form.airportTransfer}
                       onChange={(e) => setForm({ ...form, airportTransfer: e.target.checked })}
                     />
-                    <span>Complimentary Private Airport Shuttle (₦35,000)</span>
+                    <span>Private Airport Shuttle (+₦35,000)</span>
                   </label>
-                  <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', fontSize: '13.5px' }}>
                     <input
                       type="checkbox"
                       checked={form.spaPackage}
                       onChange={(e) => setForm({ ...form, spaPackage: e.target.checked })}
                     />
-                    <span>Welcome Spa &amp; Hydrotherapy Pass (₦45,000)</span>
+                    <span>Welcome Spa &amp; Hydrotherapy Pass (+₦45,000)</span>
                   </label>
                 </div>
               </div>
@@ -284,7 +281,6 @@ export default function Reservation() {
                   placeholder="Dietary specifications, specific pillows, security requests..."
                   value={form.specialRequests}
                   onChange={(e) => setForm({ ...form, specialRequests: e.target.value })}
-                  style={{ width: '100%', padding: '14px', border: '1px solid var(--color-border)', borderRadius: '2px', fontFamily: 'var(--font-sans)' }}
                 ></textarea>
               </div>
 
@@ -296,49 +292,51 @@ export default function Reservation() {
         </div>
 
         {/* Sidebar Summary */}
-        <aside style={{ background: '#fff', border: '1px solid var(--color-border)', borderRadius: '4px', padding: '24px', height: 'fit-content' }}>
-          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '24px', marginBottom: '16px' }}>Stay Summary</h3>
+        <aside className="side-panel">
+          <div className="benefits-card">
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '24px', margin: 0, color: 'var(--color-dark)' }}>Stay Summary</h3>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span style={{ color: 'var(--color-text)' }}>Selected Suite:</span>
-              <span style={{ fontWeight: 600 }}>{form.roomPreference}</span>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span style={{ color: 'var(--color-text)' }}>Rate per Night:</span>
-              <span>₦{(ROOM_RATES[form.roomPreference] || 150000).toLocaleString()}</span>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span style={{ color: 'var(--color-text)' }}>Guests:</span>
-              <span>{form.guests}</span>
-            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ color: 'var(--color-text)' }}>Selected Suite:</span>
+                <span style={{ fontWeight: 600, color: 'var(--color-dark)' }}>{form.roomPreference}</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ color: 'var(--color-text)' }}>Rate per Night:</span>
+                <span>₦{(ROOM_RATES[form.roomPreference] || 150000).toLocaleString()}</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ color: 'var(--color-text)' }}>Guests:</span>
+                <span>{form.guests}</span>
+              </div>
 
-            {calcResult && calcResult.nights > 0 && (
-              <>
-                <hr style={{ border: 'none', borderTop: '1px solid var(--color-border)', margin: '8px 0' }} />
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: 'var(--color-text)' }}>Duration:</span>
-                  <span>{calcResult.nights} Night(s)</span>
-                </div>
-                {form.airportTransfer && (
+              {calcResult && calcResult.nights > 0 && (
+                <>
+                  <hr style={{ border: 'none', borderTop: '1px solid var(--color-border)', margin: '4px 0' }} />
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: 'var(--color-text)' }}>Airport Shuttle:</span>
-                    <span>₦35,000</span>
+                    <span style={{ color: 'var(--color-text)' }}>Duration:</span>
+                    <span>{calcResult.nights} Night(s)</span>
                   </div>
-                )}
-                {form.spaPackage && (
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: 'var(--color-text)' }}>Spa Pass:</span>
-                    <span>₦45,000</span>
+                  {form.airportTransfer && (
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <span style={{ color: 'var(--color-text)' }}>Airport Shuttle:</span>
+                      <span>₦35,000</span>
+                    </div>
+                  )}
+                  {form.spaPackage && (
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <span style={{ color: 'var(--color-text)' }}>Spa Pass:</span>
+                      <span>₦45,000</span>
+                    </div>
+                  )}
+                  <hr style={{ border: 'none', borderTop: '1px solid var(--color-border)', margin: '4px 0' }} />
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '18px', fontWeight: 700, color: 'var(--color-gold)' }}>
+                    <span>Estimated Total:</span>
+                    <span>₦{calcResult.total.toLocaleString()}</span>
                   </div>
-                )}
-                <hr style={{ border: 'none', borderTop: '1px solid var(--color-border)', margin: '8px 0' }} />
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '18px', fontWeight: 700, color: 'var(--color-gold)' }}>
-                  <span>Estimated Total:</span>
-                  <span>₦{calcResult.total.toLocaleString()}</span>
-                </div>
-              </>
-            )}
+                </>
+              )}
+            </div>
           </div>
         </aside>
       </section>
