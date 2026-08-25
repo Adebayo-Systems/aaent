@@ -696,8 +696,9 @@ a {
    ABOUT PAGE — HERO VARIANT
    ============================================= */
 .hero-sm {
-  height: 480px;
-  padding: 80px;
+  min-height: 440px;
+  height: auto;
+  padding: 80px var(--container-px) 40px;
   align-items: flex-end;
 }
 
@@ -711,7 +712,7 @@ a {
 .vision-mission {
   display: flex;
   gap: 40px;
-  padding: 80px;
+  padding: 80px var(--container-px);
   background: var(--color-bg-alt);
 }
 
@@ -735,19 +736,19 @@ a {
    WHY CHOOSE US / DIFFERENTIATORS
    ============================================= */
 .why-choose-us {
-  padding: 120px 80px;
+  padding: 120px var(--container-px);
   display: flex;
   flex-direction: column;
   gap: 56px;
 }
 
 .diff-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
 .diff-card {
-  flex: 1;
   background: #fff;
   border: 1px solid var(--color-border);
   border-radius: 4px;
@@ -2721,10 +2722,18 @@ body.nav-lock-scroll {
 
   .vision-mission {
     flex-direction: column;
+    padding: 60px var(--container-px);
+    gap: 28px;
+  }
+
+  .why-choose-us {
+    padding: 60px var(--container-px);
+    gap: 40px;
   }
 
   .diff-grid {
-    flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 
   .team-welcome {
@@ -3343,6 +3352,30 @@ body.nav-lock-scroll {
     padding: 14px 16px;
   }
 
+  /* About Page (Tablet) */
+  .vision-mission {
+    padding: 48px var(--container-px);
+    gap: 24px;
+  }
+
+  .vm-card {
+    padding: 32px 24px;
+  }
+
+  .why-choose-us {
+    padding: 48px var(--container-px);
+    gap: 32px;
+  }
+
+  .diff-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .diff-card {
+    padding: 24px 20px;
+  }
+
   /* Contact Bar */
   .contact-bar {
     padding: 20px var(--container-px);
@@ -3713,6 +3746,39 @@ body.nav-lock-scroll {
   .review-card p {
     font-size: 14.5px;
     margin-bottom: 16px;
+  }
+
+  /* About Page (Small Mobile) */
+  .hero-title-sm {
+    font-size: 28px;
+  }
+
+  .vision-mission {
+    padding: 36px var(--container-px);
+    gap: 16px;
+  }
+
+  .vm-card {
+    padding: 24px 18px;
+  }
+
+  .vm-title {
+    font-size: 22px;
+    margin: 14px 0;
+  }
+
+  .why-choose-us {
+    padding: 36px var(--container-px);
+    gap: 24px;
+  }
+
+  .diff-card {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  .diff-card h4 {
+    font-size: 19px;
   }
 
   /* Footer */
