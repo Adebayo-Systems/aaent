@@ -240,7 +240,7 @@ a {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(51, 73, 90, 0.5);
+  background: rgba(0, 0, 0, 0.55);
 }
 
 .hero-content {
@@ -2542,12 +2542,355 @@ body.nav-lock-scroll {
   margin-bottom: 16px;
 }
 
+/* =============================================
+   MOBILE RESPONSIVENESS (TABLET & MOBILE)
+   ============================================= */
 @media (max-width: 768px) {
+  :root {
+    --container-px: 20px;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Header & Navigation */
+  .nav-bar {
+    height: 72px;
+    padding: 0 var(--container-px);
+  }
+
   .brand-logo-img {
-    height: 58px;
+    height: 54px;
   }
 
   .brand-logo-img.footer-logo {
     height: 68px;
+  }
+
+  /* Typography & Buttons */
+  .section-title {
+    font-size: 28px;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+
+  .section-title-sm {
+    font-size: 26px;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+
+  .body-text {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .btn {
+    padding: 14px 24px;
+    font-size: 13px;
+  }
+
+  /* Hero Section */
+  .hero {
+    height: auto;
+    min-height: 560px;
+    padding: 80px var(--container-px) 48px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: 34px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .hero-body {
+    font-size: 16px;
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Welcome Section */
+  .welcome-section {
+    padding: 64px var(--container-px);
+    gap: 32px;
+  }
+
+  .welcome-image {
+    width: 100%;
+    height: 280px;
+  }
+
+  /* Featured Rooms */
+  .featured-rooms {
+    padding: 64px var(--container-px);
+  }
+
+  .section-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .section-header-row .btn {
+    align-self: flex-start;
+  }
+
+  .rooms-row {
+    gap: 24px;
+  }
+
+  .room-card {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .room-image {
+    height: 220px;
+  }
+
+  .room-content {
+    padding: 20px 16px;
+  }
+
+  .room-content h3 {
+    font-size: 20px;
+  }
+
+  .room-footer {
+    padding: 16px;
+  }
+
+  .price-amount {
+    font-size: 18px;
+  }
+
+  /* Highlights Bento */
+  .highlights-bento {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bento-image {
+    width: 100%;
+    height: 260px;
+  }
+
+  .bento-text {
+    padding: 40px var(--container-px);
+  }
+
+  /* Reservation CTA */
+  .reservation-cta {
+    padding: 64px var(--container-px);
+  }
+
+  .reservation-panel {
+    padding: 40px 20px;
+    width: 100%;
+  }
+
+  .reservation-panel .btn {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+  }
+
+  /* Testimonials */
+  .testimonials {
+    padding: 64px var(--container-px);
+  }
+
+  .section-header-center {
+    margin-bottom: 32px;
+  }
+
+  .reviews-row {
+    gap: 20px;
+  }
+
+  .review-card {
+    padding: 28px 20px;
+  }
+
+  .quote-mark {
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
+
+  /* Contact Bar */
+  .contact-bar {
+    padding: 20px var(--container-px);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .contact-item {
+    font-size: 13px;
+  }
+
+  .contact-item.whatsapp {
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 56px var(--container-px) 32px;
+  }
+
+  .footer-top {
+    gap: 36px;
+    margin-bottom: 40px;
+  }
+
+  .footer-brand {
+    width: 100%;
+    gap: 16px;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+/* =============================================
+   MOBILE RESPONSIVENESS (SMALL SMARTPHONES)
+   ============================================= */
+@media (max-width: 480px) {
+  :root {
+    --container-px: 16px;
+  }
+
+  .btn {
+    padding: 12px 18px;
+    font-size: 12px;
+  }
+
+  /* Hero Section */
+  .hero {
+    min-height: 500px;
+    padding: 64px var(--container-px) 36px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .hero-body {
+    font-size: 14.5px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  /* Welcome Section */
+  .welcome-section {
+    padding: 48px var(--container-px);
+    gap: 24px;
+  }
+
+  .welcome-image {
+    height: 220px;
+  }
+
+  .section-title {
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+
+  /* Featured Rooms */
+  .featured-rooms {
+    padding: 48px var(--container-px);
+  }
+
+  .room-image {
+    height: 190px;
+  }
+
+  .room-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .room-footer .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Bento */
+  .bento-image {
+    height: 220px;
+  }
+
+  .bento-text {
+    padding: 32px var(--container-px);
+  }
+
+  .section-title-sm {
+    font-size: 22px;
+  }
+
+  /* Reservation CTA */
+  .reservation-cta {
+    padding: 48px var(--container-px);
+  }
+
+  .reservation-panel {
+    padding: 28px 16px;
+    border-radius: 6px;
+  }
+
+  .reservation-panel .btn {
+    max-width: 100%;
+  }
+
+  /* Testimonials */
+  .testimonials {
+    padding: 48px var(--container-px);
+  }
+
+  .review-card {
+    padding: 20px 16px;
+  }
+
+  .review-card p {
+    font-size: 14.5px;
+    margin-bottom: 16px;
+  }
+
+  /* Footer */
+  .footer-links {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
