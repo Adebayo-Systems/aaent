@@ -1613,6 +1613,163 @@ a {
 }
 
 /* =============================================
+   BOUTIQUE PAGE
+   ============================================= */
+.boutique-spotlight {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  padding: 80px var(--container-px);
+}
+
+.boutique-spotlight-image {
+  flex: 1;
+  min-width: 0;
+  height: 420px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.boutique-spotlight-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 78% 30%;
+}
+
+.boutique-spotlight-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.boutique-info-chips {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.boutique-chip {
+  background: var(--color-bg-alt);
+  padding: 14px 18px;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+}
+
+.boutique-chip .chip-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 700;
+  display: block;
+}
+
+.boutique-chip strong {
+  font-size: 13.5px;
+  color: var(--color-dark);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px;
+  width: 100%;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(51, 73, 90, 0.08);
+}
+
+.product-image {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.product-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--color-gold);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+.product-content {
+  padding: 20px;
+  flex: 1;
+}
+
+.product-category {
+  font-size: 11px;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.product-name {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  margin: 4px 0 8px;
+  color: var(--color-dark);
+}
+
+.product-desc {
+  font-size: 13px;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.product-footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+/* =============================================
    CONTACT PAGE
    ============================================= */
 .contact-split {
@@ -2692,6 +2849,27 @@ body.nav-lock-scroll {
     height: 250px;
   }
 
+  /* Boutique (1200px) */
+  .boutique-spotlight {
+    flex-direction: column;
+    padding: 60px var(--container-px);
+    gap: 36px;
+  }
+
+  .boutique-spotlight-image {
+    width: 100%;
+    height: 320px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .product-image {
+    height: 280px;
+  }
+
   .contact-split {
     flex-direction: column;
     padding: 40px;
@@ -3134,6 +3312,37 @@ body.nav-lock-scroll {
     height: 220px;
   }
 
+  /* Boutique (Tablet) */
+  .boutique-spotlight {
+    padding: 48px var(--container-px);
+    gap: 28px;
+  }
+
+  .boutique-spotlight-image {
+    height: 260px;
+  }
+
+  .boutique-chip {
+    width: 100%;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .product-image {
+    height: 240px;
+  }
+
+  .product-content {
+    padding: 16px;
+  }
+
+  .product-footer {
+    padding: 14px 16px;
+  }
+
   /* Contact Bar */
   .contact-bar {
     padding: 20px var(--container-px);
@@ -3434,6 +3643,35 @@ body.nav-lock-scroll {
   .gallery-photo-overlay {
     padding: 12px 14px;
     font-size: 13px;
+  }
+
+  /* Boutique (Small Mobile) */
+  .boutique-spotlight {
+    padding: 36px var(--container-px);
+  }
+
+  .boutique-spotlight-image {
+    height: 200px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .product-image {
+    height: 240px;
+  }
+
+  .product-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .product-footer .btn {
+    width: 100%;
+    text-align: center;
   }
 
   /* Bento */
