@@ -4,10 +4,8 @@
  */
 
 const ALLOWED_ORIGINS = [
-  'https://aa-entertainment.vercel.app',
-  'https://aaentertainment.ng',
-  'http://localhost:3000',
-  'http://localhost:5173',
+  'https://aaent.vercel.app',
+  'http://localhost:3000'
 ];
 
 export default async function handler(req, res) {
