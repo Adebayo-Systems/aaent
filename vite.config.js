@@ -81,6 +81,25 @@ export default defineConfig(({ mode }) => {
               }
             });
           });
+
+          // Webhook dev listener
+          server.middlewares.use('/api/paystack-webhook', async (req, res) => {
+            res.setHeader('Content-Type', 'application/json');
+            if (req.method !== 'POST') {
+              res.statusCode = 405;
+              res.end(JSON.stringify({ message: 'Method Not Allowed' }));
+              return;
+            }
+            let body = '';
+            req.on('data', (chunk) => {
+              body += chunk;
+            });
+            req.on('end', () => {
+              console.log('[Dev Webhook Server] Paystack webhook ping received.');
+              res.statusCode = 200;
+              res.end(JSON.stringify({ status: 'success', dev: true }));
+            });
+          });
         },
       },
     ],
