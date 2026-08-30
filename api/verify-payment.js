@@ -1,31 +1,37 @@
 /**
  * Vercel Serverless Function: Verify Paystack Payment
- * Endpoint: POST /api/verify-payment or GET /api/verify-payment?reference=...
+ * Endpoint: POST /api/verify-payment
  */
 
+const ALLOWED_ORIGINS = [
+  'https://aa-entertainment.vercel.app',
+  'https://aaentertainment.ng',
+  'http://localhost:3000',
+  'http://localhost:5173',
+];
+
 export default async function handler(req, res) {
-  // Set CORS headers
+  // Lock CORS to known origins only — no wildcard
+  const origin = req.headers.origin;
+  if (origin && ALLOWED_ORIGINS.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
   res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  );
+  res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
-  if (req.method !== 'POST' && req.method !== 'GET') {
+  // POST only — GET would expose reference in URLs and server logs
+  if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method Not Allowed' });
   }
 
   try {
-    const reference =
-      req.method === 'POST'
-        ? (typeof req.body === 'string' ? JSON.parse(req.body) : req.body)?.reference
-        : req.query?.reference;
+    const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    const { reference, expectedAmount } = body ?? {};
 
     if (!reference) {
       return res.status(400).json({
@@ -37,7 +43,11 @@ export default async function handler(req, res) {
     const secretKey = process.env.PAYSTACK_SECRET_KEY;
 
     if (!secretKey) {
-      // In local dev without secret key, return fallback test confirmation
+      if (process.env.NODE_ENV === 'production') {
+        console.error('[verify-payment] PAYSTACK_SECRET_KEY is not set in production.');
+        return res.status(500).json({ success: false, message: 'Payment service misconfigured' });
+      }
+      // Development-only fallback
       return res.status(200).json({
         success: true,
         message: 'Verified in development sandbox mode',
@@ -80,12 +90,26 @@ export default async function handler(req, res) {
       });
     }
 
+    // Validate the paid amount matches the expected booking total (within ₦1 tolerance)
+    if (expectedAmount !== undefined && expectedAmount !== null) {
+      const paidNaira = tx.amount / 100;
+      if (Math.abs(paidNaira - Number(expectedAmount)) > 1) {
+        console.error(
+          `[verify-payment] Amount mismatch: expected ₦${expectedAmount}, got ₦${paidNaira} for ref ${reference}`
+        );
+        return res.status(400).json({
+          success: false,
+          message: 'Payment amount does not match the expected booking total',
+        });
+      }
+    }
+
     return res.status(200).json({
       success: true,
       message: 'Transaction verified successfully',
       data: {
         reference: tx.reference,
-        amount: tx.amount / 100, // In Naira
+        amount: tx.amount / 100,
         currency: tx.currency,
         channel: tx.channel,
         paidAt: tx.paid_at,

@@ -15,11 +15,19 @@ export default async function handler(req, res) {
 
   const secret = process.env.PAYSTACK_SECRET_KEY;
 
+  // Fail hard in production if the secret is missing — never silently accept unverified events
+  if (!secret) {
+    if (process.env.NODE_ENV === 'production') {
+      console.error('[Paystack Webhook] PAYSTACK_SECRET_KEY is not set. Rejecting request.');
+      return res.status(500).json({ status: 'misconfigured_server' });
+    }
+    console.warn('[Paystack Webhook] PAYSTACK_SECRET_KEY not set — skipping signature check (dev only).');
+  }
+
   try {
     const rawBody = typeof req.body === 'string' ? req.body : JSON.stringify(req.body);
     const signature = req.headers['x-paystack-signature'];
 
-    // In production, cryptographically verify the signature using HMAC SHA512
     if (secret && signature) {
       const hash = crypto.createHmac('sha512', secret).update(rawBody).digest('hex');
 
@@ -27,8 +35,10 @@ export default async function handler(req, res) {
         console.error('[Paystack Webhook] Invalid signature detected. Request rejected.');
         return res.status(401).json({ status: 'invalid_signature' });
       }
-    } else if (!secret) {
-      console.warn('[Paystack Webhook] PAYSTACK_SECRET_KEY is not set. Skipping signature verification (Development mode).');
+    } else if (secret && !signature) {
+      // Secret is set but no signature header — reject as suspicious
+      console.error('[Paystack Webhook] Missing x-paystack-signature header. Request rejected.');
+      return res.status(401).json({ status: 'missing_signature' });
     }
 
     const event = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
