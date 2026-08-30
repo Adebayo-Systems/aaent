@@ -142,10 +142,28 @@ export default function Reservation() {
             },
           ],
         },
-        onSuccess: (transaction) => {
+        onSuccess: async (transaction) => {
           const totalVal = calcResult ? `₦${calcResult.total.toLocaleString()}` : 'Custom Quote';
           const numericVal = calcResult ? calcResult.total : 0;
           const refCode = transaction.reference || transaction.trxref || generatedRef;
+
+          let paymentChannel = 'Online (Paystack)';
+          try {
+            // Call backend serverless verification endpoint
+            const verifyRes = await fetch('/api/verify-payment', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ reference: refCode }),
+            });
+            if (verifyRes.ok) {
+              const verifyData = await verifyRes.json();
+              if (verifyData?.data?.channel) {
+                paymentChannel = verifyData.data.channel.toUpperCase();
+              }
+            }
+          } catch (err) {
+            console.warn('Server verification warning (proceeding with client callback):', err);
+          }
 
           const created = addBooking({
             guestName: form.fullName,
@@ -161,6 +179,7 @@ export default function Reservation() {
             paymentStatus: isDeposit ? 'Partial Deposit Paid' : 'Paid',
             status: 'Confirmed',
             transactionRef: refCode,
+            paymentChannel,
             specialRequests: form.specialRequests || 'No special requests',
             paidAt: new Date().toISOString(),
           });
@@ -170,6 +189,7 @@ export default function Reservation() {
             transactionRef: refCode,
             paidAmount: chargeAmountNaira,
             isDeposit,
+            paymentChannel,
           });
           setIsProcessing(false);
         },
