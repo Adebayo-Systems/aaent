@@ -83,17 +83,75 @@ export default function BookingsAdmin() {
     }
   };
 
+  const renderPaymentBadge = (paymentStatus, ref) => {
+    if (paymentStatus === 'Paid') {
+      return (
+        <span
+          style={{
+            fontSize: '11px',
+            fontWeight: '700',
+            color: '#065f46',
+            backgroundColor: '#d1fae5',
+            padding: '2px 8px',
+            borderRadius: '4px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '4px',
+          }}
+        >
+          ✓ Paid (Paystack)
+        </span>
+      );
+    }
+    if (paymentStatus === 'Partial Deposit Paid') {
+      return (
+        <span
+          style={{
+            fontSize: '11px',
+            fontWeight: '700',
+            color: '#1e40af',
+            backgroundColor: '#dbeafe',
+            padding: '2px 8px',
+            borderRadius: '4px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '4px',
+          }}
+        >
+          ⚡ 50% Deposit
+        </span>
+      );
+    }
+    return (
+      <span
+        style={{
+          fontSize: '11px',
+          fontWeight: '600',
+          color: '#92400e',
+          backgroundColor: '#fef3c7',
+          padding: '2px 8px',
+          borderRadius: '4px',
+        }}
+      >
+        Unpaid / Inquiry
+      </span>
+    );
+  };
+
   // Export CSV handler
   const handleExportCSV = () => {
-    const headers = ['Booking ID,Guest Name,Email,Phone,Type,Item Reserved,Date,Guests,Status,Amount,Created At'];
-    const rows = filteredBookings.map((b) =>
-      `"${b.id}","${b.guestName}","${b.email}","${b.phone}","${b.type}","${b.itemTitle}","${b.date}","${b.guests}","${b.status}","${b.totalAmount}","${b.createdAt}"`
+    const headers = [
+      'Booking ID,Guest Name,Email,Phone,Type,Item Reserved,Date,Guests,Status,Payment Status,Payment Ref,Amount,Created At',
+    ];
+    const rows = filteredBookings.map(
+      (b) =>
+        `"${b.id}","${b.guestName}","${b.email}","${b.phone}","${b.type}","${b.itemTitle}","${b.date}","${b.guests}","${b.status}","${b.paymentStatus || 'Unpaid'}","${b.transactionRef || 'N/A'}","${b.totalAmount}","${b.createdAt}"`
     );
     const csvContent = 'data:text/csv;charset=utf-8,' + [headers, ...rows].join('\n');
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', `AA_Bookings_Report_${new Date().toISOString().slice(0,10)}.csv`);
+    link.setAttribute('download', `AA_Bookings_Report_${new Date().toISOString().slice(0, 10)}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -299,7 +357,10 @@ export default function BookingsAdmin() {
 
                     <td style={{ fontSize: '13px' }}>{b.date}</td>
                     <td style={{ fontSize: '13px' }}>{b.guests}</td>
-                    <td style={{ fontWeight: '700', color: 'var(--brand-gold)' }}>{b.totalAmount}</td>
+                    <td>
+                      <div style={{ fontWeight: '700', color: 'var(--brand-gold)' }}>{b.totalAmount}</div>
+                      <div style={{ marginTop: '3px' }}>{renderPaymentBadge(b.paymentStatus, b.transactionRef)}</div>
+                    </td>
 
                     <td>{renderStatusBadge(b.status)}</td>
 
@@ -359,34 +420,41 @@ export default function BookingsAdmin() {
                   backgroundColor: 'var(--admin-input-bg)',
                   border: '1px solid var(--admin-input-border)',
                   display: 'flex',
-                  alignItems: 'center',
                   justifyContent: 'space-between',
+                  alignItems: 'center',
                 }}
               >
                 <div>
                   <span style={{ fontSize: '12px', color: 'var(--admin-text-muted)', display: 'block' }}>
-                    Current Status:
+                    Current Workflow Status
                   </span>
-                  {renderStatusBadge(activeDrawerBooking.status)}
+                  <div style={{ marginTop: '4px' }}>{renderStatusBadge(activeDrawerBooking.status)}</div>
                 </div>
 
-                <select
-                  value={activeDrawerBooking.status}
-                  onChange={(e) => {
-                    updateBookingStatus(activeDrawerBooking.id, e.target.value);
-                    setActiveDrawerBooking({ ...activeDrawerBooking, status: e.target.value });
-                  }}
-                  className="form-control"
-                  style={{ width: 'auto', padding: '6px 10px', fontSize: '13px', fontWeight: '600' }}
-                >
-                  <option value="Pending">Pending</option>
-                  <option value="Confirmed">Confirmed</option>
-                  <option value="Completed">Completed</option>
-                  <option value="Cancelled">Cancelled</option>
-                </select>
+                <div style={{ display: 'flex', gap: '6px' }}>
+                  <button
+                    onClick={() => updateBookingStatus(activeDrawerBooking.id, 'Confirmed')}
+                    className="btn-primary btn-sm"
+                  >
+                    Confirm
+                  </button>
+                  <button
+                    onClick={() => updateBookingStatus(activeDrawerBooking.id, 'Completed')}
+                    className="btn-secondary btn-sm"
+                  >
+                    Complete
+                  </button>
+                  <button
+                    onClick={() => updateBookingStatus(activeDrawerBooking.id, 'Cancelled')}
+                    className="btn-outline btn-sm"
+                    style={{ color: 'var(--brand-red)' }}
+                  >
+                    Cancel
+                  </button>
+                </div>
               </div>
 
-              {/* Guest Details Card */}
+              {/* Guest Profile Box */}
               <div
                 style={{
                   padding: '16px',
@@ -396,7 +464,7 @@ export default function BookingsAdmin() {
                 }}
               >
                 <h4 style={{ fontSize: '14px', margin: '0 0 12px 0', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                  Guest Contact Details
+                  Guest Intelligence
                 </h4>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '14px' }}>
@@ -464,8 +532,17 @@ export default function BookingsAdmin() {
 
                   <div>
                     <span style={{ color: 'var(--admin-text-muted)', display: 'block' }}>Payment Status:</span>
-                    <span>{activeDrawerBooking.paymentStatus || 'Pending'}</span>
+                    <div>{renderPaymentBadge(activeDrawerBooking.paymentStatus, activeDrawerBooking.transactionRef)}</div>
                   </div>
+
+                  {activeDrawerBooking.transactionRef && (
+                    <div style={{ gridColumn: 'span 2' }}>
+                      <span style={{ color: 'var(--admin-text-muted)', display: 'block' }}>Payment Reference:</span>
+                      <code style={{ fontSize: '12px', background: 'rgba(0,0,0,0.06)', padding: '2px 6px', borderRadius: '4px' }}>
+                        {activeDrawerBooking.transactionRef}
+                      </code>
+                    </div>
+                  )}
                 </div>
               </div>
 
