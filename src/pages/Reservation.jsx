@@ -26,9 +26,8 @@ const formatReadable = (d) => {
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 };
 
-// Fallback Paystack test public key (replace with your live/test key in .env)
-const PAYSTACK_KEY =
-  import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || 'pk_test_5617bfddcf64bcfa728c68702b8813cf58bb0e51';
+// Public key must be set in .env — no fallback to keep keys out of source code
+const PAYSTACK_KEY = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY;
 
 export default function Reservation() {
   const { addBooking } = useData();
@@ -89,6 +88,7 @@ export default function Reservation() {
   const [paymentOption, setPaymentOption] = useState('online'); // 'online' | 'deposit' | 'hotel'
   const [isProcessing, setIsProcessing] = useState(false);
   const [confirmedBooking, setConfirmedBooking] = useState(null);
+  const [paymentError, setPaymentError] = useState('');
 
   // Calculate nights and estimated total
   const calculateTotal = () => {
@@ -111,8 +111,91 @@ export default function Reservation() {
 
   const calcResult = calculateTotal();
 
+  const printReceipt = (booking) => {
+    const isPaid = booking.paymentStatus === 'Paid' || booking.paymentStatus === 'Partial Deposit Paid';
+    const receiptHtml = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>AA Entertainment – Booking Voucher ${booking.id}</title>
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { font-family: Georgia, serif; padding: 40px; color: #1a202c; max-width: 680px; margin: auto; }
+          .header { text-align: center; border-bottom: 2px solid #d4af37; padding-bottom: 20px; margin-bottom: 24px; }
+          .logo { font-size: 26px; font-weight: bold; letter-spacing: 2px; color: #1a202c; }
+          .tagline { font-size: 12px; color: #666; margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
+          .voucher-title { font-size: 20px; color: #d4af37; margin: 16px 0 4px; text-transform: uppercase; letter-spacing: 2px; }
+          .ref { font-size: 13px; color: #555; }
+          .status-badge { display: inline-block; background: ${isPaid ? '#d1fae5' : '#fef3c7'}; color: ${isPaid ? '#065f46' : '#92400e'}; padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; margin: 12px 0; }
+          table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+          td { padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+          td:first-child { color: #666; width: 48%; }
+          td:last-child { font-weight: 600; color: #1a202c; }
+          .total-row td { border-top: 2px solid #d4af37; border-bottom: none; padding-top: 14px; font-size: 16px; }
+          .total-row td:last-child { color: #d4af37; font-size: 18px; }
+          .txn-box { background: #f9f9f9; border: 1px solid #e5e5e5; padding: 12px 16px; border-radius: 6px; margin-top: 16px; font-size: 12px; color: #555; }
+          .txn-box strong { color: #1a202c; display: block; margin-bottom: 4px; }
+          .footer { text-align: center; margin-top: 32px; padding-top: 16px; border-top: 1px solid #e5e5e5; font-size: 11px; color: #999; }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <div class="logo">AA ENTERTAINMENT &amp; HOSPITALITY</div>
+          <div class="tagline">A Sanctuary of Refined Sophistication &bull; Abeokuta, Ogun State</div>
+          <div class="voucher-title">Reservation Voucher</div>
+          <div class="ref">Dossier: <strong>${booking.id}</strong> &bull; Issued: ${new Date().toLocaleDateString('en-NG', { day: 'numeric', month: 'long', year: 'numeric' })}</div>
+          <div class="status-badge">${booking.paymentStatus}</div>
+        </div>
+
+        <table>
+          <tr><td>Guest Name</td><td>${booking.guestName}</td></tr>
+          <tr><td>Email</td><td>${booking.email}</td></tr>
+          <tr><td>Phone</td><td>${booking.phone}</td></tr>
+          <tr><td>Suite Reserved</td><td>${booking.itemTitle}</td></tr>
+          <tr><td>Stay Dates</td><td>${booking.date}</td></tr>
+          <tr><td>Number of Guests</td><td>${booking.guests}</td></tr>
+          ${booking.specialRequests && booking.specialRequests !== 'No special requests' ? `<tr><td>Special Requests</td><td>${booking.specialRequests}</td></tr>` : ''}
+          <tr class="total-row"><td>Total Reservation Value</td><td>${booking.totalAmount}</td></tr>
+        </table>
+
+        ${isPaid && booking.transactionRef && booking.transactionRef !== 'PAY-AT-HOTEL' ? `
+          <div class="txn-box">
+            <strong>Payment Verification</strong>
+            Transaction Ref: ${booking.transactionRef}
+            ${booking.paymentChannel ? ' &bull; Channel: ' + booking.paymentChannel : ''}
+            ${booking.paidAt ? ' &bull; Paid: ' + new Date(booking.paidAt).toLocaleString('en-NG') : ''}
+          </div>
+        ` : ''}
+
+        <div class="footer">
+          <p>Please present this voucher at check-in. For concierge support call +234 (0) 803 000 7788</p>
+          <p style="margin-top:6px">concierge@aaentertainment.ng &bull; 1 A&amp;A Avenue, Off Presidential Boulevard, Abeokuta</p>
+        </div>
+      </body>
+      </html>
+    `;
+    const win = window.open('', '_blank', 'width=750,height=900');
+    if (win) {
+      win.document.write(receiptHtml);
+      win.document.close();
+      win.focus();
+      win.print();
+    }
+  };
+
   const handlePaystackPayment = (chargeAmountNaira, isDeposit) => {
+    if (!PAYSTACK_KEY) {
+      setPaymentError('Payment gateway is not configured. Please contact the concierge desk directly.');
+      return;
+    }
     setIsProcessing(true);
+    setPaymentError('');
+
+    // 30-second safety guard — releases the button if the popup hangs
+    const processingTimeout = setTimeout(() => {
+      setIsProcessing(false);
+      setPaymentError('Payment window timed out. Please try again or call us directly.');
+    }, 30000);
 
     try {
       const paystack = new PaystackPop();
@@ -142,10 +225,32 @@ export default function Reservation() {
             },
           ],
         },
-        onSuccess: (transaction) => {
+        onSuccess: async (transaction) => {
+          clearTimeout(processingTimeout);
           const totalVal = calcResult ? `₦${calcResult.total.toLocaleString()}` : 'Custom Quote';
           const numericVal = calcResult ? calcResult.total : 0;
           const refCode = transaction.reference || transaction.trxref || generatedRef;
+
+          let paymentChannel = 'Online (Paystack)';
+          let paymentVerifiedByServer = false;
+          try {
+            const verifyRes = await fetch('/api/verify-payment', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ reference: refCode, expectedAmount: chargeAmountNaira }),
+            });
+            if (verifyRes.ok) {
+              const verifyData = await verifyRes.json();
+              if (verifyData?.success) {
+                paymentVerifiedByServer = true;
+                if (verifyData.data?.channel) {
+                  paymentChannel = verifyData.data.channel.toUpperCase();
+                }
+              }
+            }
+          } catch (err) {
+            console.warn('Server verification warning (proceeding with client callback):', err);
+          }
 
           const created = addBooking({
             guestName: form.fullName,
@@ -161,6 +266,8 @@ export default function Reservation() {
             paymentStatus: isDeposit ? 'Partial Deposit Paid' : 'Paid',
             status: 'Confirmed',
             transactionRef: refCode,
+            paymentChannel,
+            paymentVerifiedByServer,
             specialRequests: form.specialRequests || 'No special requests',
             paidAt: new Date().toISOString(),
           });
@@ -170,29 +277,34 @@ export default function Reservation() {
             transactionRef: refCode,
             paidAmount: chargeAmountNaira,
             isDeposit,
+            paymentChannel,
           });
           setIsProcessing(false);
         },
         onCancel: () => {
+          clearTimeout(processingTimeout);
           setIsProcessing(false);
         },
       });
     } catch (err) {
+      clearTimeout(processingTimeout);
       console.error('Paystack initialization error:', err);
       setIsProcessing(false);
-      alert('Unable to initialize payment window. Please check your internet connection or try again.');
+      setPaymentError('Unable to initialize payment window. Please check your connection or try again.');
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setPaymentError('');
+
     if (!checkInDate || !checkOutDate) {
-      alert('Please select both Check-In and Check-Out dates.');
+      setPaymentError('Please select both Check-In and Check-Out dates.');
       return;
     }
 
     if (!calcResult || calcResult.total <= 0) {
-      alert('Invalid booking dates. Please select at least 1 night.');
+      setPaymentError('Invalid booking dates. Please select at least 1 night.');
       return;
     }
 
@@ -377,7 +489,7 @@ export default function Reservation() {
                 <button
                   type="button"
                   className="btn btn-dark"
-                  onClick={() => window.print()}
+                  onClick={() => printReceipt(confirmedBooking)}
                   style={{ flex: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
                 >
                   <Printer size={16} /> Print Voucher
@@ -528,8 +640,31 @@ export default function Reservation() {
                 </div>
               </div>
 
+              {/* INLINE ERROR BANNER */}
+              {paymentError && (
+                <div
+                  role="alert"
+                  style={{
+                    background: '#fef2f2',
+                    border: '1px solid #fca5a5',
+                    borderRadius: '6px',
+                    padding: '12px 16px',
+                    fontSize: '13.5px',
+                    color: '#991b1b',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                  }}
+                >
+                  <span style={{ fontSize: '18px' }}>⚠</span>
+                  {paymentError}
+                </div>
+              )}
+
               {/* PAYMENT SELECTION */}
               <div
+                role="radiogroup"
+                aria-labelledby="payment-method-label"
                 style={{
                   padding: '18px 20px',
                   background: 'rgba(212, 175, 55, 0.05)',
@@ -539,18 +674,18 @@ export default function Reservation() {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                   <CreditCard size={18} color="var(--color-gold)" />
-                  <label
+                  <span
+                    id="payment-method-label"
                     style={{
                       fontWeight: 700,
                       fontSize: '13px',
                       textTransform: 'uppercase',
                       letterSpacing: '1px',
                       color: 'var(--color-dark)',
-                      margin: 0,
                     }}
                   >
                     Payment &amp; Confirmation Method
-                  </label>
+                  </span>
                 </div>
 
                 <div style={{ display: 'grid', gap: '10px' }}>
