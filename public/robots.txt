@@ -1,0 +1,11 @@
+User-agent: *
+# Block scrapers from admin, API, and private routes
+Disallow: /admin/
+Disallow: /api/
+Disallow: /admin
+
+# Allow all public pages
+Allow: /
+
+# Sitemap location (update with your real domain)
+Sitemap: https://aaent.vercel.app/sitemap.xml

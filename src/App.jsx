@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { DataProvider } from './context/DataContext';
+import { useAntiCopy } from './hooks/useAntiCopy';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -22,6 +23,7 @@ import Reservation from './pages/Reservation';
 import AdminLayout from './pages/admin/AdminLayout';
 
 export default function App() {
+  useAntiCopy();
   return (
     <DataProvider>
       <Router>
