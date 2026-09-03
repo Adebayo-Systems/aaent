@@ -41,7 +41,50 @@ body {
 img {
   display: block;
   max-width: 100%;
+  /* Prevent drag-to-save on images */
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: none; /* images not clickable as drag targets */
 }
+
+/* =============================================
+   CONTENT PROTECTION
+   Prevents casual text selection & print copying.
+   Inputs, textareas, and buttons are excluded
+   so the site remains fully functional.
+   ============================================= */
+body,
+h1, h2, h3, h4, h5, h6,
+p, span, li, td, th,
+section, article, aside, div {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Re-allow selection inside form controls */
+input, textarea, select, [contenteditable] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+}
+
+/* Hide everything when printing — prevents Ctrl+P content theft */
+@media print {
+  body * {
+    display: none !important;
+  }
+  body::after {
+    display: block !important;
+    content: 'This content is protected by AA Entertainment & Hospitality. Unauthorized reproduction is prohibited.';
+    font-size: 18px;
+    text-align: center;
+    padding: 80px 40px;
+    color: #333;
+  }
+}
+
 
 a {
   text-decoration: none;
