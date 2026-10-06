@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useData } from '../../context/DataContext';
-import { Shield, Key, Sun, Moon, ArrowRight } from 'lucide-react';
+import { Lock, Sun, Moon, ArrowRight } from 'lucide-react';
 
 export default function AdminLogin() {
   const { loginAdmin, adminTheme, toggleTheme } = useData();
@@ -19,81 +19,71 @@ export default function AdminLogin() {
     <div className="admin-platform" data-theme={adminTheme}>
       <div className="admin-login-wrapper">
         <div className="admin-login-card">
-          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '-20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '8px' }}>
             <button
+              type="button"
               onClick={toggleTheme}
               className="theme-toggle-btn"
               title="Toggle Light/Dark Theme"
             >
-              {adminTheme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-              {adminTheme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+              {adminTheme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+              <span>{adminTheme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
             </button>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
             <img
               src="/images/brand-logo-transparent.webp"
-              alt="AA Logo"
+              alt="AA Entertainment"
               className="admin-login-logo"
             />
           </div>
-          <h2 className="login-title">AA Entertainment</h2>
-          <p className="login-subtitle">Management &amp; Content Administration Platform</p>
+
+          <div className="admin-eyebrow">
+            <span className="admin-eyebrow-line"></span>
+            <span>Management Portal</span>
+            <span className="admin-eyebrow-line"></span>
+          </div>
+
+          <h1 className="login-title">AA Entertainment</h1>
+          <p className="login-subtitle">Hospitality Administration &amp; Content Management</p>
 
           <form onSubmit={handleSubmit}>
             <div className="form-group" style={{ textAlign: 'left' }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <Key size={14} /> Security Passcode (Default: 1234)
+              <label htmlFor="admin-passcode-input" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Lock size={13} /> Security Passcode
               </label>
               <input
+                id="admin-passcode-input"
                 type="password"
-                className="pin-input-field"
+                className={`pin-input-field ${error ? 'has-error' : ''}`}
                 placeholder="••••"
                 maxLength={8}
                 value={pin}
                 onChange={(e) => {
                   setPin(e.target.value);
-                  setError(false);
+                  if (error) setError(false);
                 }}
                 autoFocus
+                autoComplete="current-password"
               />
             </div>
 
             {error && (
-              <p
-                style={{
-                  color: 'var(--brand-red)',
-                  fontSize: '13px',
-                  marginBottom: '16px',
-                  fontWeight: '600',
-                }}
-              >
-                Invalid Security Passcode. Please try again.
+              <p className="admin-login-error">
+                Invalid Security Passcode.
               </p>
             )}
 
             <button
               type="submit"
               className="btn-primary"
-              style={{ width: '100%', justifyContent: 'center', padding: '12px' }}
+              style={{ width: '100%', justifyContent: 'center', padding: '14px' }}
             >
-              Unlock Administration Portal <ArrowRight size={16} />
+              <span>Unlock Management Portal</span>
+              <ArrowRight size={15} />
             </button>
           </form>
-
-          <div
-            style={{
-              marginTop: '24px',
-              fontSize: '12px',
-              color: 'var(--admin-text-muted)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-            }}
-          >
-            <Shield size={13} /> Protected Management Environment
-          </div>
         </div>
       </div>
     </div>
