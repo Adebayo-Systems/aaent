@@ -6,6 +6,7 @@ import { useAntiCopy } from './hooks/useAntiCopy';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import SitePasswordGate from './components/SitePasswordGate';
 
 import Home from './pages/Home';
 import RoomsListing from './pages/RoomsListing';
@@ -32,12 +33,13 @@ export default function App() {
           {/* Admin Platform Route Branch */}
           <Route path="/admin/*" element={<AdminLayout />} />
 
-          {/* Main Website Routes */}
+          {/* Main Website Routes (Protected by Password Gate) */}
           <Route
             path="/*"
             element={
-              <div className="app-container">
-                <Navbar />
+              <SitePasswordGate>
+                <div className="app-container">
+                  <Navbar />
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/rooms-listing" element={<RoomsListing />} />
@@ -56,7 +58,8 @@ export default function App() {
                 </Routes>
                 <Footer />
               </div>
-            }
+            </SitePasswordGate>
+          }
           />
         </Routes>
       </Router>

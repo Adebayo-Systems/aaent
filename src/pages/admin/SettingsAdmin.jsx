@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useData } from '../../context/DataContext';
-import { Settings, Save, Shield, RefreshCw, CheckCircle2 } from 'lucide-react';
+import { Settings, Save, Shield, RefreshCw, CheckCircle2, Lock } from 'lucide-react';
 
 export default function SettingsAdmin() {
-  const { settings, updateSettings, resetAllData } = useData();
+  const { settings, updateSettings, resetAllData, lockSite } = useData();
 
   const [form, setForm] = useState({
     hotelName: settings.hotelName || '',
@@ -14,6 +14,7 @@ export default function SettingsAdmin() {
     openingHours: settings.openingHours || '',
     promoBanner: settings.promoBanner || '',
     adminPin: settings.adminPin || '1234',
+    sitePasswordEnabled: settings.sitePasswordEnabled !== false,
   });
 
   const [savedSuccess, setSavedSuccess] = useState(false);
@@ -129,6 +130,39 @@ export default function SettingsAdmin() {
               value={form.promoBanner}
               onChange={(e) => setForm({ ...form, promoBanner: e.target.value })}
             />
+          </div>
+        </div>
+
+        <div className="admin-card">
+          <h3 className="admin-card-title" style={{ marginBottom: '16px' }}>
+            <Lock size={18} style={{ display: 'inline', marginRight: '6px' }} /> Website Access Gate
+          </h3>
+          <p style={{ color: 'var(--admin-text-muted)', fontSize: '13px', marginBottom: '16px' }}>
+            When enabled, visitors must enter the access password to view the website.
+          </p>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={form.sitePasswordEnabled}
+                onChange={(e) => setForm({ ...form, sitePasswordEnabled: e.target.checked })}
+                style={{ width: '16px', height: '16px', accentColor: 'var(--color-brand-red)' }}
+              />
+              <span style={{ fontWeight: 600 }}>Enable Access Gate</span>
+            </label>
+
+            <button
+              type="button"
+              onClick={() => {
+                lockSite();
+                alert('Current browser session locked. The lock screen will now appear on the website.');
+              }}
+              className="btn-outline"
+              style={{ padding: '8px 16px', fontSize: '13px' }}
+            >
+              <Lock size={14} style={{ marginRight: '6px' }} /> Lock Browser Session
+            </button>
           </div>
         </div>
 

@@ -346,4 +346,5 @@ export const INITIAL_SETTINGS = {
   openingHours: '24/7 Reception & Concierge',
   promoBanner: 'Exclusive Olumo Rock Helicopter Transfers now available for Executive Suite guests.',
   adminPin: '1234',
+  sitePasswordEnabled: true,
 };
