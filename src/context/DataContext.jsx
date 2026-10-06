@@ -67,9 +67,21 @@ export function DataProvider({ children }) {
     return saved ? JSON.parse(saved) : INITIAL_BOOKINGS;
   });
 
+  // Site access authorization state (Session-only, resets when browser tab closes)
+  const [isSiteUnlocked, setIsSiteUnlocked] = useState(() => {
+    return sessionStorage.getItem('aa_site_access_unlocked') === 'true';
+  });
+
   const [settings, setSettings] = useState(() => {
     const saved = localStorage.getItem('aa_data_settings');
-    return saved ? JSON.parse(saved) : INITIAL_SETTINGS;
+    if (saved) {
+      try {
+        return { ...INITIAL_SETTINGS, ...JSON.parse(saved) };
+      } catch {
+        return INITIAL_SETTINGS;
+      }
+    }
+    return INITIAL_SETTINGS;
   });
 
   // Sync to localStorage
@@ -118,6 +130,34 @@ export function DataProvider({ children }) {
   const logoutAdmin = () => {
     setIsAdminAuthenticated(false);
     localStorage.removeItem('aa_admin_auth');
+  };
+
+  const unlockSite = async (enteredPassword) => {
+    if (!enteredPassword) return false;
+    try {
+      const res = await fetch('/api/verify-access', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: enteredPassword }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success) {
+          setIsSiteUnlocked(true);
+          sessionStorage.setItem('aa_site_access_unlocked', 'true');
+          return true;
+        }
+      }
+      return false;
+    } catch {
+      return false;
+    }
+  };
+
+  const lockSite = () => {
+    setIsSiteUnlocked(false);
+    sessionStorage.removeItem('aa_site_access_unlocked');
+    localStorage.removeItem('aa_site_access_unlocked');
   };
 
   // ROOMS CRUD
@@ -281,6 +321,10 @@ export function DataProvider({ children }) {
     isAdminAuthenticated,
     loginAdmin,
     logoutAdmin,
+
+    isSiteUnlocked,
+    unlockSite,
+    lockSite,
 
     rooms,
     addRoom,

@@ -100,6 +100,41 @@ export default defineConfig(({ mode }) => {
               res.end(JSON.stringify({ status: 'success', dev: true }));
             });
           });
+
+          // Site access password verification dev middleware
+          server.middlewares.use('/api/verify-access', async (req, res) => {
+            res.setHeader('Content-Type', 'application/json');
+            if (req.method !== 'POST') {
+              res.statusCode = 405;
+              res.end(JSON.stringify({ success: false, message: 'Method Not Allowed' }));
+              return;
+            }
+            let body = '';
+            req.on('data', (chunk) => {
+              body += chunk;
+            });
+            req.on('end', () => {
+              try {
+                const parsed = JSON.parse(body || '{}');
+                const configured = env.SITE_ACCESS_PASSWORD || process.env.SITE_ACCESS_PASSWORD;
+                if (!configured) {
+                  res.statusCode = 500;
+                  res.end(JSON.stringify({ success: false, message: 'SITE_ACCESS_PASSWORD is not set' }));
+                  return;
+                }
+                if (typeof parsed.password === 'string' && parsed.password.trim() === configured.trim()) {
+                  res.statusCode = 200;
+                  res.end(JSON.stringify({ success: true }));
+                } else {
+                  res.statusCode = 401;
+                  res.end(JSON.stringify({ success: false, message: 'Invalid password' }));
+                }
+              } catch {
+                res.statusCode = 400;
+                res.end(JSON.stringify({ success: false, message: 'Bad request' }));
+              }
+            });
+          });
         },
       },
     ],
